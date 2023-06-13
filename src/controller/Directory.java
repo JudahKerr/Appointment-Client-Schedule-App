@@ -1,15 +1,54 @@
 package controller;
 
+import helper.Customer;
+import helper.CustomerQuery;
+import helper.HelperFunctions;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import main.Main;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class Directory {
+
+    @FXML
+    private TableView<Customer> customersTable;
+    @FXML
+    private TableColumn<Customer, Integer> customersID;
+    @FXML
+    private TableColumn<Customer, String> customersName;
+    @FXML
+    private TableColumn<Customer, String> customersAddress;
+    @FXML
+    private TableColumn<Customer, String> customersPhone;
+    @FXML
+    private TableColumn<Customer, String> customersState;
+    @FXML
+    private TableColumn<Customer, String> customersPostal;
+
+    public void initialize() throws SQLException {
+
+
+        //  Sets the Customer Table
+        customersTable.setItems(FXCollections.observableArrayList(CustomerQuery.select()));
+        customersID.setCellValueFactory(new PropertyValueFactory<>("Id"));
+        customersName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        customersAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        customersPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
+        customersState.setCellValueFactory(new PropertyValueFactory<>("stateName"));
+        customersPostal.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
+
+    }
 
 
     public void onAddCustomerClick(javafx.event.ActionEvent event) throws IOException {

@@ -1,56 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
-            fx:controller="controller.Login">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Login">
     <children>
         <Label layoutX="203.0" layoutY="210.0" prefHeight="45.0" prefWidth="176.0" styleClass="label" text="Username:">
             <font>
-                <Font name="Segoe UI" size="24.0"/>
+                <Font name="Segoe UI" size="24.0" />
             </font>
         </Label>
         <Label layoutX="206.0" layoutY="285.0" prefHeight="45.0" prefWidth="176.0" styleClass="label" text="Password:">
             <font>
-                <Font name="Segoe UI" size="24.0"/>
+                <Font name="Segoe UI" size="24.0" />
             </font>
         </Label>
-        <TextField layoutX="398.0" layoutY="210.0" prefHeight="45.0" prefWidth="250.0" styleClass="text-field">
+        <TextField fx:id="usernameField" layoutX="398.0" layoutY="210.0" prefHeight="45.0" prefWidth="250.0" styleClass="text-field">
             <font>
-                <Font name="Segoe UI" size="24.0"/>
+                <Font name="Segoe UI" size="24.0" />
             </font>
         </TextField>
         <Label layoutX="206.0" layoutY="350.0" prefHeight="45.0" prefWidth="176.0" styleClass="label" text="Timezone:">
             <font>
-                <Font name="Segoe UI" size="24.0"/>
+                <Font name="Segoe UI" size="24.0" />
             </font>
         </Label>
-        <Label alignment="CENTER" contentDisplay="TOP" layoutX="398.0" layoutY="350.0" prefHeight="45.0"
-               prefWidth="250.0" text="label" textFill="#6f6f6f">
+        <Label alignment="CENTER" contentDisplay="TOP" layoutX="398.0" layoutY="350.0" prefHeight="45.0" prefWidth="250.0" text="label" textFill="#6f6f6f">
             <font>
-                <Font name="Segoe UI" size="24.0"/>
+                <Font name="Segoe UI" size="24.0" />
             </font>
         </Label>
-        <Button layoutX="541.0" layoutY="464.0" mnemonicParsing="false" onAction="#onLoginClick" prefHeight="46.0"
-                prefWidth="107.0" styleClass="button" text="Login">
+        <Button layoutX="541.0" layoutY="464.0" mnemonicParsing="false" onAction="#onLoginClick" prefHeight="46.0" prefWidth="107.0" styleClass="button" text="Login">
             <font>
-                <Font name="Segoe UI" size="24.0"/>
+                <Font name="Segoe UI" size="24.0" />
             </font>
         </Button>
-        <Button layoutX="203.0" layoutY="464.0" mnemonicParsing="false" onAction="#onExitClick" prefHeight="46.0"
-                prefWidth="107.0" styleClass="button" text="Exit">
+        <Button layoutX="203.0" layoutY="464.0" mnemonicParsing="false" onAction="#onExitClick" prefHeight="46.0" prefWidth="107.0" styleClass="button" text="Exit">
             <font>
-                <Font name="Segoe UI" size="24.0"/>
+                <Font name="Segoe UI" size="24.0" />
             </font>
         </Button>
-        <Label fx:id="loginLabel" alignment="CENTER" layoutX="98.0" layoutY="89.0" prefHeight="46.0" prefWidth="600.0"
-               styleClass="label" text="Login" textAlignment="CENTER">
+        <Label fx:id="loginLabel" alignment="CENTER" layoutX="98.0" layoutY="89.0" prefHeight="46.0" prefWidth="600.0" styleClass="label" text="Login" textAlignment="CENTER">
             <font>
-                <Font name="Segoe UI" size="24.0"/>
+                <Font name="Segoe UI" size="24.0" />
             </font>
         </Label>
-        <PasswordField layoutX="400.0" layoutY="285.0" prefHeight="45.0" prefWidth="250.0"/>
+        <PasswordField fx:id="passwordField" layoutX="400.0" layoutY="285.0" prefHeight="45.0" prefWidth="250.0" />
     </children>
 </AnchorPane>

@@ -1,6 +1,7 @@
 package main;
 
 import helper.CustomerQuery;
+import helper.HelperFunctions;
 import helper.JDBC;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -21,12 +22,17 @@ public class Main extends Application {
 //
 //     CustomerQuery.update("Peepee", "Peepee", "123 butt", "80521", "911", "Judah", 42, 2);
 //
-//     CustomerQuery.delete(2);
+//        for(int i = 5; i <= 11; i++){
+//            CustomerQuery.delete(i);
+//        }
+
 
         CustomerQuery.select();
 
+
         //  Starts the application, loads First Screen
         launch(args);
+
     }
 
     @Override

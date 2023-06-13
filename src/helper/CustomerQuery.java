@@ -4,12 +4,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public abstract class CustomerQuery {
 
-    public static void select() {
+    public static List<Customer> select() {
         String sql = "SELECT * FROM CUSTOMERS";
+        List<Customer> customers = new ArrayList<>();
 
         try (PreparedStatement ps = JDBC.connection.prepareStatement(sql)) {
             ResultSet rs = ps.executeQuery();
@@ -21,25 +24,28 @@ public abstract class CustomerQuery {
                 String address = rs.getString("Address");
                 String postalCode = rs.getString("Postal_Code");
                 String phone = rs.getString("Phone");
-                String createDate = String.valueOf(rs.getDate("Create_Date"));  // Wrapping these in String Value Of
+                String createDate = String.valueOf(rs.getDate("Create_Date"));
                 String createdBy = rs.getString("Created_By");
-                String lastUpdate = String.valueOf(rs.getTimestamp("Last_Update")); // Wrapping these in String Value Of
-                String lastUpdateBy = rs.getString("Last_Updated_By");
-                int division = rs.getInt("Division_ID");
-                System.out.println(ID + " | " + name + " | " + address + " | " + postalCode + " | " + phone + " | " + createDate + " | " + createdBy + " | " + lastUpdate + " | " + lastUpdateBy + " | " + division);
+                String lastUpdate = String.valueOf(rs.getTimestamp("Last_Update"));
+                String lastUpdatedBy = rs.getString("Last_Updated_By");
+                int divisionId = rs.getInt("Division_ID");
+                String stateName = HelperFunctions.divisionLookup(HelperFunctions.SearchType.BY_ID, Integer.toString(divisionId));
+                // Create a new Customer object and add it to the list
+                customers.add(new Customer(ID, name, address, postalCode, phone, createDate, createdBy, lastUpdate, lastUpdatedBy, divisionId, stateName));
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
-
         }
+
+        return customers;
     }
 
     // INSERT STATEMENT
     public static int insert(String customerName, String address, String postalCode, String phone, String createdBy, String updatedBy, int divisionID) {
         Timestamp currentTimestamp = new Timestamp(Calendar.getInstance().getTime().getTime());
 
-        String sql = "INSERT INTO CUSTOMERS (Customer_Name, Address, Postal_Code, Phone, Create_Date, Created_By, Last_Update, Last_Updated_By, Division_ID) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)"; // Fixed the column names
+        String sql = "INSERT INTO CUSTOMERS (Customer_Name, Address, Postal_Code, Phone, Create_Date, Created_By, Last_Update, Last_Updated_By, Division_ID) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement ps = JDBC.connection.prepareStatement(sql)) {
             // Set the values for each column you want to update
@@ -61,7 +67,7 @@ public abstract class CustomerQuery {
         }
     }
 
-    //  UPDATE STATEMENT
+    // UPDATE STATEMENT
     public static int update(String customerName, String address, String postalCode, String phone, String createdBy, String updatedBy, int divisionID, int customerID) {
         Timestamp currentTimestamp = new Timestamp(Calendar.getInstance().getTime().getTime());
         String sql = "UPDATE CUSTOMERS SET Customer_Name = ?, Address = ?, Postal_Code = ?, Phone = ?, Create_Date = ?, Created_By = ?, Last_Update = ?, Last_Updated_By = ?, Division_ID = ? WHERE Customer_ID = ?";
@@ -87,7 +93,7 @@ public abstract class CustomerQuery {
         }
     }
 
-    //  DELETE STATEMENT
+    // DELETE STATEMENT
     public static int delete(int customerID) {
         String sql = "DELETE FROM CUSTOMERS WHERE Customer_ID = ?";
         try (PreparedStatement ps = JDBC.connection.prepareStatement(sql)) {
@@ -100,4 +106,5 @@ public abstract class CustomerQuery {
     }
 
 }
+
 
