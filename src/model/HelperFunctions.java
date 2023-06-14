@@ -1,4 +1,4 @@
-package helper;
+package model;
 
 import javafx.scene.control.Alert;
 
@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class HelperFunctions {
 
-    public static void showAlert(String type, String message) {
+    public static void showAlert(String type, String title, String message) {
         Alert.AlertType alertType;
 
         switch (type.toUpperCase()) {
@@ -30,8 +30,8 @@ public class HelperFunctions {
         }
 
         Alert alert = new Alert(alertType);
-        alert.setTitle(type);
-        alert.setHeaderText(type);
+        alert.setTitle(title);
+        alert.setHeaderText(title);
         alert.setContentText(message);
         alert.showAndWait();
     }

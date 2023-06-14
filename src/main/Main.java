@@ -1,8 +1,7 @@
 package main;
 
-import helper.CustomerQuery;
-import helper.HelperFunctions;
-import helper.JDBC;
+import model.CustomerQuery;
+import model.JDBC;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

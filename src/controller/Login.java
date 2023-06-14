@@ -1,8 +1,9 @@
 package controller;
 
-import helper.HelperFunctions;
-import helper.User;
-import helper.UserQuery;
+import javafx.scene.control.Label;
+import model.HelperFunctions;
+import model.User;
+import model.UserQuery;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,7 +17,9 @@ import main.Main;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.TimeZone;
 
 public class Login implements Initializable {
 
@@ -24,10 +27,21 @@ public class Login implements Initializable {
     TextField passwordField;
     @FXML
     TextField usernameField;
+    @FXML Label loginLabel;
+    @FXML
+    Label usernameLabel;
+    @FXML
+    Label passwordLabel;
+    @FXML
+    Label timezoneLabel;
+    @FXML Button loginButton;
+    @FXML Button exitButton;
+    @FXML
+    Label timezone;
+
 
     @FXML
     protected void onLoginClick(ActionEvent event) throws IOException {
-
         boolean isAuthenticated = false;
 
         for (User user : UserQuery.select()) {
@@ -37,6 +51,8 @@ public class Login implements Initializable {
             }
         }
 
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("Nat", Locale.getDefault());
+
         if (isAuthenticated) {
             Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/Directory.fxml"));
@@ -45,9 +61,12 @@ public class Login implements Initializable {
             stage.setScene(scene);
             stage.show();
         } else {
-            HelperFunctions.showAlert("Error","Incorrect Username or Password");
+            String errorTitle = resourceBundle.getString("errorTitle");
+            String errorMessage = resourceBundle.getString("errorMessage");
+            HelperFunctions.showAlert("error", errorTitle, errorMessage);
         }
     }
+
 
 
     @FXML
@@ -56,7 +75,20 @@ public class Login implements Initializable {
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle rb) {
+        try {
+            ResourceBundle resourceBundle = ResourceBundle.getBundle("Nat", Locale.getDefault());
 
+            loginLabel.setText(resourceBundle.getString("Login"));
+            usernameLabel.setText(resourceBundle.getString("Username"));
+            passwordLabel.setText(resourceBundle.getString("Password"));
+            timezoneLabel.setText(resourceBundle.getString("Timezone"));
+            exitButton.setText(resourceBundle.getString("Exit"));
+            loginButton.setText(resourceBundle.getString("Login"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String timeZoneId = TimeZone.getDefault().getID();
+        timezone.setText(timeZoneId);
     }
 }

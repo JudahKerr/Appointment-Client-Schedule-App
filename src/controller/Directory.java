@@ -1,10 +1,10 @@
 package controller;
 
-import helper.Customer;
-import helper.CustomerQuery;
-import helper.HelperFunctions;
+import model.Appointment;
+import model.AppointmentQuery;
+import model.Customer;
+import model.CustomerQuery;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,6 +21,8 @@ import java.sql.SQLException;
 
 public class Directory {
 
+
+    // Customer Table FXML
     @FXML
     private TableView<Customer> customersTable;
     @FXML
@@ -36,8 +38,45 @@ public class Directory {
     @FXML
     private TableColumn<Customer, String> customersPostal;
 
-    public void initialize() throws SQLException {
 
+    // Appointment Table FXML
+    @FXML
+    private TableView<Appointment> appTable;
+    @FXML
+    private TableColumn<Appointment, Integer> appIDColumn;
+    @FXML
+    private TableColumn<Appointment, String> appTitleColumn;
+    @FXML
+    private TableColumn<Appointment, String> appTypeColumn;
+    @FXML
+    private TableColumn<Appointment, String> appDescriptionColumn;
+    @FXML
+    private TableColumn<Appointment, String> appLocationColumn;
+    @FXML
+    private TableColumn<Appointment, String> appStartColumn;
+    @FXML
+    private TableColumn<Appointment, String> appEndColumn;
+    @FXML
+    private TableColumn<Appointment, String> appContactColumn;
+    @FXML
+    private TableColumn<Appointment, String> appCustomerColumn;
+    @FXML
+    private TableColumn<Appointment, String> appUserColumn;
+
+
+    public void initialize() throws SQLException {
+        // Sets the Appointment Table
+        appTable.setItems(FXCollections.observableArrayList(AppointmentQuery.select()));
+        appIDColumn.setCellValueFactory(new PropertyValueFactory<>("Id"));
+        appTitleColumn.setCellValueFactory(new PropertyValueFactory<>("title"));
+        appTypeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
+        appDescriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
+        appLocationColumn.setCellValueFactory(new PropertyValueFactory<>("location"));
+        appStartColumn.setCellValueFactory(new PropertyValueFactory<>("start"));
+        appEndColumn.setCellValueFactory(new PropertyValueFactory<>("end"));
+        appContactColumn.setCellValueFactory(new PropertyValueFactory<>("contact_id"));
+        appCustomerColumn.setCellValueFactory(new PropertyValueFactory<>("customer_id"));
+        appUserColumn.setCellValueFactory(new PropertyValueFactory<>("user_id"));
 
         //  Sets the Customer Table
         customersTable.setItems(FXCollections.observableArrayList(CustomerQuery.select()));
@@ -47,7 +86,6 @@ public class Directory {
         customersPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
         customersState.setCellValueFactory(new PropertyValueFactory<>("stateName"));
         customersPostal.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
-
     }
 
 
