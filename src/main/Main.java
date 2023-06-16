@@ -30,6 +30,7 @@ public class Main extends Application {
 
 
         //  Starts the application, loads First Screen
+        System.setProperty("prism.lcdtext", "false");
         launch(args);
 
     }

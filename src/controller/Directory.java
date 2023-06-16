@@ -1,9 +1,6 @@
 package controller;
 
-import model.Appointment;
-import model.AppointmentQuery;
-import model.Customer;
-import model.CustomerQuery;
+import model.*;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -86,6 +83,9 @@ public class Directory {
         customersPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
         customersState.setCellValueFactory(new PropertyValueFactory<>("stateName"));
         customersPostal.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
+
+
+
     }
 
 
@@ -99,12 +99,21 @@ public class Directory {
     }
 
     public void onUpdateCustomerClick(javafx.event.ActionEvent event) throws IOException {
-        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/UpdateCustomer.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 500, 600);
-        stage.setTitle("Update Customer");
-        stage.setScene(scene);
-        stage.show();
+
+        Customer selectedCustomer = (Customer) customersTable.getSelectionModel().getSelectedItem();
+
+        if(selectedCustomer == null) {
+            HelperFunctions.showAlert("error","Error","No Customer Selected");
+        } else {
+            UpdateCustomer.getCustomer(selectedCustomer);
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/UpdateCustomer.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 500, 600);
+            stage.setTitle("Update Customer");
+            stage.setScene(scene);
+            stage.show();
+        }
+
     }
 
     public void onAddAppointmentClick(javafx.event.ActionEvent event) throws IOException {
@@ -117,12 +126,19 @@ public class Directory {
     }
 
     public void onUpdateAppointmentClick(javafx.event.ActionEvent event) throws IOException {
-        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/UpdateAppointment.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 500);
-        stage.setTitle("Update Appointment");
-        stage.setScene(scene);
-        stage.show();
+
+        Appointment selectedAppointment = (Appointment) appTable.getSelectionModel().getSelectedItem();
+
+        if (selectedAppointment == null) {
+            HelperFunctions.showAlert("error", "Error", "No Appointment Selected");
+        } else {
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/UpdateAppointment.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 800, 500);
+            stage.setTitle("Update Appointment");
+            stage.setScene(scene);
+            stage.show();
+        }
     }
 
     public void onReportsClick(javafx.event.ActionEvent event) throws IOException {

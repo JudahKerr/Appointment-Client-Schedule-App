@@ -29,8 +29,14 @@ public abstract class CustomerQuery {
                 String lastUpdate = String.valueOf(rs.getTimestamp("Last_Update"));
                 String lastUpdatedBy = rs.getString("Last_Updated_By");
                 int divisionId = rs.getInt("Division_ID");
-                String stateName = HelperFunctions.divisionLookup(HelperFunctions.SearchType.BY_ID, Integer.toString(divisionId));
+
+                // Retrieve the DivisionResult object from the divisionLookup method
+                HelperFunctions.DivisionResult divisionResult = HelperFunctions.divisionLookup(HelperFunctions.SearchType.BY_ID, Integer.toString(divisionId));
+                String stateName = divisionResult.getDivisionName();
+
+
                 // Create a new Customer object and add it to the list
+                // Assuming the Customer constructor accepts stateName and countryCode as the last two parameters
                 customers.add(new Customer(ID, name, address, postalCode, phone, createDate, createdBy, lastUpdate, lastUpdatedBy, divisionId, stateName));
             }
 
@@ -40,6 +46,7 @@ public abstract class CustomerQuery {
 
         return customers;
     }
+
 
     // INSERT STATEMENT
     public static int insert(String customerName, String address, String postalCode, String phone, String createdBy, String updatedBy, int divisionID) {

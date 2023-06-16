@@ -7,52 +7,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Directory">
     <children>
-        <Label layoutX="50.0" layoutY="25.0" prefHeight="50.0" prefWidth="169.0" text="Appointments">
+        <Label layoutX="50.0" layoutY="27.0" prefHeight="50.0" prefWidth="450.0" styleClass="directory-label" text="Appointments">
             <font>
                 <Font name="Segoe UI Bold" size="24.0" />
             </font>
         </Label>
-        <Separator layoutY="450.0" prefHeight="36.0" prefWidth="1200.0" />
-        <TableView fx:id="appTable" layoutX="50.0" layoutY="125.0" prefHeight="256.0" prefWidth="1100.0">
-            <columns>
-                <TableColumn fx:id="appIDColumn" prefWidth="75.0" text="ID" />
-                <TableColumn fx:id="appTitleColumn" prefWidth="75.0" text="Title" />
-                <TableColumn fx:id="appTypeColumn" prefWidth="75.0" text="Type" />
-                <TableColumn fx:id="appDescriptionColumn" prefWidth="75.0" text="Description" />
-                <TableColumn fx:id="appLocationColumn" prefWidth="75.0" text="Location" />
-                <TableColumn fx:id="appStartColumn" prefWidth="75.0" text="Start Date/Time" />
-                <TableColumn fx:id="appEndColumn" prefWidth="75.0" text="End Date/Time" />
-                <TableColumn fx:id="appContactColumn" prefWidth="75.0" text="Contact" />
-                <TableColumn fx:id="appCustomerColumn" prefWidth="75.0" text="Customer ID" />
-                <TableColumn fx:id="appUserColumn" prefWidth="75.0" text="User ID" />
-            </columns>
-            <columnResizePolicy>
-                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-            </columnResizePolicy>
-        </TableView>
-        <RadioButton layoutX="600.0" layoutY="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="118.0" text="Current Week">
-            <font>
-                <Font name="Segoe UI" size="14.0" />
-            </font>
-        </RadioButton>
-        <RadioButton layoutX="750.0" layoutY="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="118.0" text="Current Month">
-            <font>
-                <Font name="Segoe UI" size="14.0" />
-            </font>
-        </RadioButton>
-        <RadioButton layoutX="901.0" layoutY="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="142.0" text="All Appointments">
-            <font>
-                <Font name="Segoe UI" size="14.0" />
-            </font>
-        </RadioButton>
-        <Group layoutX="50.0" layoutY="405.0">
-            <children>
-                <Button mnemonicParsing="false" onAction="#onAddAppointmentClick" prefHeight="36.0" prefWidth="118.0" text="Add" />
-                <Button layoutX="169.0" mnemonicParsing="false" onAction="#onUpdateAppointmentClick" prefHeight="36.0" prefWidth="118.0" text="Update" />
-                <Button layoutX="432.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="118.0" text="Delete" />
-            </children>
-        </Group>
-        <TableView fx:id="customersTable" layoutX="50.0" layoutY="526.0" prefHeight="256.0" prefWidth="874.0">
+        <TableView fx:id="customersTable" layoutX="50.0" layoutY="526.0" prefHeight="265.0" prefWidth="930.0" styleClass="table-view">
             <columns>
                 <TableColumn fx:id="customersID" prefWidth="75.0" text="ID" />
                 <TableColumn fx:id="customersName" prefWidth="75.0" text="Name" />
@@ -67,17 +27,60 @@
         </TableView>
         <Group layoutX="50.0" layoutY="807.0">
             <children>
-                <Button mnemonicParsing="false" onAction="#onAddCustomerClick" prefHeight="36.0" prefWidth="118.0" text="Add" />
-                <Button layoutX="169.0" mnemonicParsing="false" onAction="#onUpdateCustomerClick" prefHeight="36.0" prefWidth="118.0" text="Update" />
-                <Button layoutX="432.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="118.0" text="Delete" />
+                <Button mnemonicParsing="false" onAction="#onAddCustomerClick" prefHeight="36.0" prefWidth="118.0" styleClass="button" text="Add" />
+                <Button layoutX="169.0" mnemonicParsing="false" onAction="#onUpdateCustomerClick" prefHeight="36.0" prefWidth="118.0" styleClass="button" text="Update" />
+                <Button layoutX="432.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="118.0" styleClass="button" text="Delete" />
             </children>
         </Group>
-        <Label layoutX="50.0" layoutY="468.0" prefHeight="50.0" prefWidth="169.0" text="Customers">
+        <Label layoutX="50.0" layoutY="450.0" prefHeight="50.0" prefWidth="450.0" styleClass="directory-label" text="Customers">
             <font>
                 <Font name="Segoe UI Bold" size="24.0" />
             </font>
         </Label>
-        <Button layoutX="1012.0" layoutY="526.0" mnemonicParsing="false" onAction="#onReportsClick" prefHeight="50.0" prefWidth="118.0" text="Reports" />
-        <Button layoutX="1012.0" layoutY="618.0" mnemonicParsing="false" onAction="#onLogoutClick" prefHeight="50.0" prefWidth="118.0" text="Logout" />
+        <Button layoutX="1012.0" layoutY="526.0" mnemonicParsing="false" onAction="#onReportsClick" prefHeight="50.0" prefWidth="118.0" styleClass="button" text="Reports" />
+        <Button layoutX="1012.0" layoutY="618.0" mnemonicParsing="false" onAction="#onLogoutClick" prefHeight="50.0" prefWidth="118.0" styleClass="button" text="Logout" />
+        <TableView fx:id="appTable" layoutX="50.0" layoutY="115.0" prefHeight="265.0" prefWidth="1100.0" styleClass="table-view">
+            <columns>
+                <TableColumn fx:id="appIDColumn" prefWidth="62.0" text="ID" />
+                <TableColumn fx:id="appTitleColumn" prefWidth="112.0" text="Title" />
+                <TableColumn fx:id="appTypeColumn" prefWidth="121.0" text="Type" />
+                <TableColumn fx:id="appDescriptionColumn" prefWidth="105.0" text="Description" />
+                <TableColumn fx:id="appLocationColumn" prefWidth="96.0" text="Location" />
+                <TableColumn fx:id="appStartColumn" prefWidth="137.0" text="Start Time" />
+                <TableColumn fx:id="appEndColumn" prefWidth="158.0" text="End Time" />
+                <TableColumn fx:id="appContactColumn" prefWidth="114.0" text="Contact" />
+                <TableColumn fx:id="appCustomerColumn" prefWidth="117.0" text="Customer ID" />
+                <TableColumn fx:id="appUserColumn" prefWidth="77.0" text="User ID" />
+            </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+              </TableView>
+      <Group layoutX="707.0" layoutY="65.0">
+         <children>
+              <RadioButton mnemonicParsing="false" prefHeight="50.0" prefWidth="118.0" styleClass="radio-button" text="Current Week">
+                  <font>
+                      <Font name="Segoe UI" size="14.0" />
+                  </font>
+              </RadioButton>
+              <RadioButton layoutX="150.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="118.0" styleClass="radio-button" text="Current Month">
+                  <font>
+                      <Font name="Segoe UI" size="14.0" />
+                  </font>
+              </RadioButton>
+              <RadioButton layoutX="301.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="142.0" styleClass="radio-button" text="All Appointments">
+                  <font>
+                      <Font name="Segoe UI" size="14.0" />
+                  </font>
+              </RadioButton>
+         </children>
+      </Group>
+        <Group layoutX="50.0" layoutY="395.0">
+            <children>
+                <Button mnemonicParsing="false" onAction="#onAddAppointmentClick" prefHeight="36.0" prefWidth="118.0" styleClass="button" text="Add" />
+                <Button layoutX="169.0" mnemonicParsing="false" onAction="#onUpdateAppointmentClick" prefHeight="36.0" prefWidth="118.0" styleClass="button" text="Update" />
+                <Button layoutX="432.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="118.0" styleClass="button" text="Delete" />
+            </children>
+        </Group>
     </children>
 </AnchorPane>

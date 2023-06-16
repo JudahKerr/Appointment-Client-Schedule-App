@@ -1,5 +1,7 @@
 package model;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 
 import java.sql.PreparedStatement;
@@ -7,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class HelperFunctions {
+
+
 
     public static void showAlert(String type, String title, String message) {
         Alert.AlertType alertType;
@@ -86,14 +90,34 @@ public class HelperFunctions {
         return returnValue;
     }
 
-    public static String divisionLookup(SearchType searchType, String value) throws SQLException {
+    public static class DivisionResult {
+        private String divisionName;
+        private int countryCode;
+
+        public DivisionResult(String divisionName, int countryCode) {
+            this.divisionName = divisionName;
+            this.countryCode = countryCode;
+        }
+
+        public String getDivisionName() {
+            return divisionName;
+        }
+
+        public int getCountryCode() {
+            return countryCode;
+        }
+    }
+
+
+    public static DivisionResult divisionLookup(SearchType searchType, String value) throws SQLException {
         String sql;
-        String returnValue = null;
+        String divisionName = null;
+        int countryCode = 0;
 
         if (searchType == SearchType.BY_ID) {
-            sql = "SELECT Division FROM FIRST_LEVEL_DIVISIONS WHERE Division_ID = ?";
+            sql = "SELECT Division, Country_ID FROM FIRST_LEVEL_DIVISIONS WHERE Division_ID = ?";
         } else {
-            sql = "SELECT Division_ID FROM FIRST_LEVEL_DIVISIONS WHERE Division = ?";
+            sql = "SELECT Division_ID, Country_ID FROM FIRST_LEVEL_DIVISIONS WHERE Division = ?";
         }
 
         try (PreparedStatement ps = JDBC.connection.prepareStatement(sql)) {
@@ -101,13 +125,80 @@ public class HelperFunctions {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-                returnValue = rs.getString(1);
+                divisionName = rs.getString(1);
+                countryCode = rs.getInt(2);
             } else {
-                returnValue = "No Division Found";
+                divisionName = "No Division Found";
             }
         }
-        return returnValue;
+
+        // Create a DivisionResult object and return it
+        return new DivisionResult(divisionName, countryCode);
     }
+
+    public static ObservableList<String> getStateDivisions() throws SQLException {
+        ObservableList<String> states = FXCollections.observableArrayList();
+
+        // SQL query to retrieve all states
+        String sql = "SELECT Division FROM FIRST_LEVEL_DIVISIONS WHERE Country_ID = ?";
+
+        try (PreparedStatement ps = JDBC.connection.prepareStatement(sql)) {
+            ps.setInt(1,1);
+            ResultSet rs = ps.executeQuery();
+
+            // Iterate through result set and create DivisionResult objects
+            while (rs.next()) {
+                String divisionName = rs.getString("Division");
+
+               states.add(divisionName);
+            }
+        }
+
+        return states;
+    }
+
+    public static ObservableList<String> getUKDivisions() throws SQLException {
+        ObservableList<String> uk = FXCollections.observableArrayList();
+
+        // SQL query to retrieve all states
+        String sql = "SELECT Division FROM FIRST_LEVEL_DIVISIONS WHERE Country_ID = ?";
+
+        try (PreparedStatement ps = JDBC.connection.prepareStatement(sql)) {
+            ps.setInt(1,2);
+            ResultSet rs = ps.executeQuery();
+
+            // Iterate through result set and create DivisionResult objects
+            while (rs.next()) {
+                String divisionName = rs.getString("Division");
+
+                uk.add(divisionName);
+            }
+        }
+
+        return uk;
+    }
+
+    public static ObservableList<String> getCanadaDivisions() throws SQLException {
+        ObservableList<String> canada = FXCollections.observableArrayList();
+
+        // SQL query to retrieve all states
+        String sql = "SELECT Division FROM FIRST_LEVEL_DIVISIONS WHERE Country_ID = ?";
+
+        try (PreparedStatement ps = JDBC.connection.prepareStatement(sql)) {
+            ps.setInt(1,3);
+            ResultSet rs = ps.executeQuery();
+
+            // Iterate through result set and create DivisionResult objects
+            while (rs.next()) {
+                String divisionName = rs.getString("Division");
+
+                canada.add(divisionName);
+            }
+        }
+
+        return canada;
+    }
+
 
 
 }

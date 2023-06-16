@@ -1,9 +1,15 @@
 /* Set general styles for the root container */
 .root {
-    -fx-background-color: #2d2d2d; /* Dark gray background */
+    /*-fx-background-color: #2d2d2d; /* Dark gray background */
+    -fx-background-color: #27282b;
     -fx-padding: 30px; /* Padding around the edges */
     -fx-alignment: center; /* Center align the children */
+    -fx-font-family: "HK Grotesk Bold";
 }
+
+
+/********************       LOGIN SCREEN      **************************/
+
 
 /* Style the label displaying 'Login' */
 #loginLabel {
@@ -25,7 +31,7 @@
 .text-field {
     -fx-font-family: "HK Grotesk Bold";
     -fx-font-size: 14pt; /* Font size for text input */
-    -fx-background-color: #444444; /* Dark gray background */
+    -fx-background-color: #737373; /* Dark gray background */
     -fx-text-fill: #FFFFFF; /* White text */
     -fx-pref-width: 250px; /* Preferred width */
     -fx-padding: 5px; /* Padding inside the text field */
@@ -35,13 +41,93 @@
 .button {
     -fx-font-family: "HK Grotesk Bold";
     -fx-font-size: 14pt; /* Font size for button text */
-    -fx-background-color: #4CAF50; /* Green background */
-    -fx-text-fill: #FFFFFF; /* White text */
+    -fx-background-color: #494E6B; /* Green background */
+    -fx-text-fill: #F7F7F7; /* White text */
     -fx-padding: 10px 20px; /* Padding inside the button */
     -fx-border-radius: 5px; /* Rounded corners */
 }
 
 /* Change button color when hovered */
 .button:hover {
-    -fx-background-color: #45a049; /* Slightly darker green when hovered */
+    -fx-background-color: #373d63; /* Slightly darker green when hovered */
+    -fx-cursor: hand;
+}
+
+
+/********************       DIRECTORY SCREEN      **************************/
+.directory-label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "HK Grotesk Bold";
+    -fx-font-weight: bold;
+    -fx-font-size: 28pt;
+    -fx-padding: 5px;
+}
+/* Set general styles for table views */
+.table-view {
+    -fx-background-color: #494E6B; /* Dark gray background */
+    -fx-table-cell-border-color: #F0F0F0; /* Darker border between cells */
+}
+
+/* Style table columns */
+.table-column {
+    -fx-background-color: #444444; /* Dark gray background */
+    -fx-text-fill: #FFFFFF; /* White text */
+    -fx-border-color: #333333; /* Darker border color */
+}
+
+
+
+/* Style table column headers */
+.table-view .column-header .label {
+    -fx-background-color: #3a3a3a;
+    -fx-text-fill: #D3D3D3;
+    -fx-font-size: 16px;
+    -fx-padding: 2px;
+}
+
+/* Style table cells */
+.table-view .table-cell {
+    -fx-text-fill: #FFFFFF; /* Light gray text */
+    -fx-font-size: 14px;
+    -fx-background-color: #6e6e6e;
+    -fx-font-family: "HK Grotesk Bold";
+    -fx-padding: 2px; /* Padding inside the cell */
+    -fx-alignment: center;
+}
+
+.table-view .table-row-cell:selected .table-cell {
+    -fx-background-color: #0e663d !important; /* Example: darker shade of blue */
+    -fx-text-fill: #F7F7F7 !important; /* White text */
+}
+
+
+/* Style the radio buttons */
+.radio-button {
+    -fx-font-family: "HK Grotesk Bold";
+    -fx-font-size: 10pt; /* Font size for radio button text */
+    -fx-text-fill: #CCCCCC; /* Light gray text */
+    -fx-font-weight: bold;
+}
+
+/* Style radio button when selected */
+.radio-button:selected {
+    -fx-text-fill: #FFA726; /* Green text when selected */
+}
+
+/* Additional style for buttons */
+.button.secondary {
+    -fx-background-color: #3F51B5; /* Blue background */
+    -fx-text-fill: #FFFFFF; /* White text */
+}
+
+/* Change additional button color when hovered */
+.button.secondary:hover {
+    -fx-background-color: #3949AB; /* Slightly darker blue when hovered */
+}
+
+/* Additional style for labels */
+.label.secondary {
+    -fx-font-family: "HK Grotesk Bold";
+    -fx-font-size: 16pt; /* Font size for additional labels */
+    -fx-text-fill: #4CAF50; /* Green text */
 }
