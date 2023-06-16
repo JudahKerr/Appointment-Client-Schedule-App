@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.Main;
@@ -24,8 +25,8 @@ public class UpdateCustomer {
     @FXML private TextField nameField;
     @FXML private TextField addressField;
     @FXML private TextField phoneField;
-    @FXML private ChoiceBox countryField;
-    @FXML private ChoiceBox stateField;
+    @FXML private ComboBox countryField;
+    @FXML private ComboBox stateField;
     @FXML private TextField postalField;
 
 
@@ -147,6 +148,7 @@ public class UpdateCustomer {
             String state = stateField.getSelectionModel().getSelectedItem().toString();
             HelperFunctions.DivisionResult newDiv = HelperFunctions.divisionLookup(HelperFunctions.SearchType.BY_NAME, state);
             divID = Integer.parseInt(newDiv.getDivisionName());
+
             // Database update
             CustomerQuery.update(name, address, postal, phone, createdBy, updatedBy, divID, customerID);
 

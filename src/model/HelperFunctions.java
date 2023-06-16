@@ -3,6 +3,7 @@ package model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,32 +13,27 @@ public class HelperFunctions {
 
 
 
-    public static void showAlert(String type, String title, String message) {
-        Alert.AlertType alertType;
+    public static ButtonType showAlert(String type, String title, String content) {
+        Alert alert;
 
-        switch (type.toUpperCase()) {
-            case "ERROR":
-                alertType = Alert.AlertType.ERROR;
+        switch (type.toLowerCase()) {
+            case "error":
+                alert = new Alert(Alert.AlertType.ERROR);
                 break;
-            case "INFORMATION":
-                alertType = Alert.AlertType.INFORMATION;
+            case "confirmation":
+                alert = new Alert(Alert.AlertType.CONFIRMATION);
                 break;
-            case "CONFIRMATION":
-                alertType = Alert.AlertType.CONFIRMATION;
-                break;
-            case "WARNING":
-                alertType = Alert.AlertType.WARNING;
-                break;
+
             default:
-                alertType = Alert.AlertType.NONE;
+                alert = new Alert(Alert.AlertType.NONE);
                 break;
         }
 
-        Alert alert = new Alert(alertType);
         alert.setTitle(title);
-        alert.setHeaderText(title);
-        alert.setContentText(message);
-        alert.showAndWait();
+        alert.setContentText(content);
+
+        // This line waits for the user to click a button and returns the result
+        return alert.showAndWait().orElse(ButtonType.CANCEL);
     }
 
    public enum SearchType {

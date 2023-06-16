@@ -112,6 +112,20 @@ public abstract class CustomerQuery {
         }
     }
 
+    public static int checkIDS(int customerID) {
+        String sql = "SELECT COUNT(*) FROM customers WHERE customer_id = ?";
+        try (PreparedStatement ps = JDBC.connection.prepareStatement(sql)) {
+            ps.setInt(1, customerID);
+            ResultSet resultSet = ps.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt(1); // Retrieve the count from the result set
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0; // Return 0 if there's an error or no match
+    }
+
 }
 
 

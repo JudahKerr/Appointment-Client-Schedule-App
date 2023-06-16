@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.event.ActionEvent;
+import javafx.scene.control.ButtonType;
 import model.*;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -84,8 +86,19 @@ public class Directory {
         customersState.setCellValueFactory(new PropertyValueFactory<>("stateName"));
         customersPostal.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
 
+        customersTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                // Deselect the item in the second table view
+                appTable.getSelectionModel().clearSelection();
+            }
+        });
 
-
+        appTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                // Deselect the item in the first table view
+                customersTable.getSelectionModel().clearSelection();
+            }
+        });
     }
 
 
@@ -93,6 +106,8 @@ public class Directory {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/AddCustomer.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 500, 600);
+        String css = this.getClass().getResource("/view/styles.css").toExternalForm();
+        scene.getStylesheets().add(css);
         stage.setTitle("Add Customer");
         stage.setScene(scene);
         stage.show();
@@ -100,7 +115,7 @@ public class Directory {
 
     public void onUpdateCustomerClick(javafx.event.ActionEvent event) throws IOException {
 
-        Customer selectedCustomer = (Customer) customersTable.getSelectionModel().getSelectedItem();
+        Customer selectedCustomer = customersTable.getSelectionModel().getSelectedItem();
 
         if(selectedCustomer == null) {
             HelperFunctions.showAlert("error","Error","No Customer Selected");
@@ -109,12 +124,41 @@ public class Directory {
             Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/UpdateCustomer.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 500, 600);
+            String css = this.getClass().getResource("/view/styles.css").toExternalForm();
+            scene.getStylesheets().add(css);
             stage.setTitle("Update Customer");
             stage.setScene(scene);
             stage.show();
         }
 
     }
+
+    @FXML
+    public void onCustomerDeleteClick(ActionEvent event) throws  IOException {
+        Customer selectedCustomer = customersTable.getSelectionModel().getSelectedItem();
+
+        if(selectedCustomer == null) {
+            HelperFunctions.showAlert("error","Error","No Customer Selected");
+        } else {
+            ButtonType result = HelperFunctions.showAlert("Confirmation","Confirmation","Are you sure you want to delete this customer?");
+
+            if (result == ButtonType.OK) {
+                // Deletes the customer
+                CustomerQuery.delete(selectedCustomer.getId());
+
+                //  Refresh the Stage
+                Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+                FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/Directory.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 1200, 900);
+                String css = this.getClass().getResource("/view/styles.css").toExternalForm();
+                scene.getStylesheets().add(css);
+                stage.setTitle("Client/Appointment Scheduler");
+                stage.setScene(scene);
+                stage.show();
+            } else {
+
+            }
+    }}
 
     public void onAddAppointmentClick(javafx.event.ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();

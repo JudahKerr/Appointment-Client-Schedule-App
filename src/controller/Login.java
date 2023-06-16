@@ -52,22 +52,34 @@ public class Login implements Initializable {
             }
         }
 
+        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/Directory.fxml"));
+          Scene scene = new Scene(fxmlLoader.load(), 1200, 900);
+          String css = this.getClass().getResource("/view/styles.css").toExternalForm();
+         scene.getStylesheets().add(css);
+           stage.setTitle("Client/Appointment Scheduler");
+           stage.setScene(scene);
+           stage.show();
+
         ResourceBundle resourceBundle = ResourceBundle.getBundle("Nat", Locale.getDefault());
 
-        if (isAuthenticated) {
-            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/Directory.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 1200, 900);
-            String css = this.getClass().getResource("/view/styles.css").toExternalForm();
-            scene.getStylesheets().add(css);
-            stage.setTitle("Client/Appointment Scheduler");
-            stage.setScene(scene);
-            stage.show();
-        } else {
-            String errorTitle = resourceBundle.getString("errorTitle");
-            String errorMessage = resourceBundle.getString("errorMessage");
-            HelperFunctions.showAlert("error", errorTitle, errorMessage);
-        }
+
+        // ***********************************  UNCOMMENT AFTER PRODUCTION   **********************************//
+        //*****************************************************************************************************//
+//        if (isAuthenticated) {
+//            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+//            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/Directory.fxml"));
+//            Scene scene = new Scene(fxmlLoader.load(), 1200, 900);
+//            String css = this.getClass().getResource("/view/styles.css").toExternalForm();
+//            scene.getStylesheets().add(css);
+//            stage.setTitle("Client/Appointment Scheduler");
+//            stage.setScene(scene);
+//            stage.show();
+//        } else {
+//            String errorTitle = resourceBundle.getString("errorTitle");
+//            String errorMessage = resourceBundle.getString("errorMessage");
+//            HelperFunctions.showAlert("error", errorTitle, errorMessage);
+//        }
     }
 
 

@@ -40,6 +40,7 @@
 /* Style the buttons */
 .button {
     -fx-font-family: "HK Grotesk Bold";
+    -fx-font-weight: bold;
     -fx-font-size: 14pt; /* Font size for button text */
     -fx-background-color: #494E6B; /* Green background */
     -fx-text-fill: #F7F7F7; /* White text */
@@ -79,7 +80,7 @@
 
 /* Style table column headers */
 .table-view .column-header .label {
-    -fx-background-color: #3a3a3a;
+    -fx-background-color: #28262e;
     -fx-text-fill: #D3D3D3;
     -fx-font-size: 16px;
     -fx-padding: 2px;
@@ -114,20 +115,52 @@
     -fx-text-fill: #FFA726; /* Green text when selected */
 }
 
-/* Additional style for buttons */
-.button.secondary {
-    -fx-background-color: #3F51B5; /* Blue background */
-    -fx-text-fill: #FFFFFF; /* White text */
-}
+/*****************************     ADD & UPDATE CUSTOMER     ***********************************/
 
-/* Change additional button color when hovered */
-.button.secondary:hover {
-    -fx-background-color: #3949AB; /* Slightly darker blue when hovered */
-}
-
-/* Additional style for labels */
-.label.secondary {
+.small-label {
     -fx-font-family: "HK Grotesk Bold";
-    -fx-font-size: 16pt; /* Font size for additional labels */
-    -fx-text-fill: #4CAF50; /* Green text */
+    -fx-font-size: 12pt; /* Font size for username/password labels */
+    -fx-text-fill: #CCCCCC; /* Light gray text */
+    -fx-padding: 5px;
+}
+
+.combo-box {
+    -fx-font-family: "HK Grotesk Bold";
+    -fx-font-size: 14pt;
+    -fx-background-color: #494E6B;
+    -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-border-radius: 5px;
+    -fx-accent: #373d63;
+    -fx-focus-color: #373d63;
+    -fx-pref-height: 40px;
+    -fx-min-height: 40px;
+    -fx-pref-width: 250px;
+
+}
+
+.combo-box .text {
+    -fx-fill: white;
+}
+
+.combo-box:hover {
+    -fx-background-color: #373d63;
+    -fx-cursor: hand;
+}
+
+/* Style dropdown list in ComboBox */
+.combo-box-popup {
+    -fx-background-color: #494E6B;
+}
+
+/* Style list cell items in ComboBox dropdown */
+.combo-box-popup .list-cell {
+    -fx-text-fill: white;
+    -fx-background-color: #737373;
+
+}
+
+/* Change list cell background color in ComboBox dropdown when hovered */
+.combo-box-popup .list-cell:hover {
+    -fx-background-color: #373d63;
 }
