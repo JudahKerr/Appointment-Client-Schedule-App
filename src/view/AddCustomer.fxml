@@ -1,67 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddCustomer">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            fx:controller="controller.AddCustomer">
     <children>
-        <Label alignment="CENTER" layoutX="148.0" layoutY="28.0" prefHeight="29.0" prefWidth="204.0" styleClass="label" text="Add Customer">
+        <Label alignment="CENTER" layoutX="148.0" layoutY="28.0" prefHeight="29.0" prefWidth="204.0" styleClass="label"
+               text="Add Customer">
             <font>
-                <Font name="Segoe UI Bold" size="24.0" />
+                <Font name="Segoe UI Bold" size="24.0"/>
             </font>
         </Label>
         <Group layoutX="92.0" layoutY="111.0">
             <children>
-                <TextField fx:id="IDField" disable="true" editable="false" layoutX="125.0" prefHeight="25.0" prefWidth="205.0" promptText="ID Auto-Generated" styleClass="text-field" />
-                <TextField fx:id="nameField" layoutX="125.0" layoutY="50.0" prefHeight="25.0" prefWidth="205.0" styleClass="text-field" />
-                <TextField fx:id="addressField" layoutX="125.0" layoutY="100.0" prefHeight="25.0" prefWidth="205.0" styleClass="text-field" />
-                <TextField fx:id="phoneField" layoutX="125.0" layoutY="150.0" prefHeight="25.0" prefWidth="205.0" styleClass="text-field" />
+                <TextField fx:id="IDField" disable="true" editable="false" layoutX="125.0" prefHeight="25.0"
+                           prefWidth="205.0" promptText="ID Auto-Generated" styleClass="text-field"/>
+                <TextField fx:id="nameField" layoutX="125.0" layoutY="50.0" prefHeight="25.0" prefWidth="205.0"
+                           styleClass="text-field"/>
+                <TextField fx:id="addressField" layoutX="125.0" layoutY="100.0" prefHeight="25.0" prefWidth="205.0"
+                           styleClass="text-field"/>
+                <TextField fx:id="phoneField" layoutX="125.0" layoutY="150.0" prefHeight="25.0" prefWidth="205.0"
+                           styleClass="text-field"/>
                 <Label prefHeight="25.0" prefWidth="122.0" styleClass="small-label" text="ID">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                 </Label>
                 <Label layoutY="50.0" prefHeight="25.0" prefWidth="122.0" styleClass="small-label" text="Name">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                 </Label>
                 <Label layoutY="100.0" prefHeight="25.0" prefWidth="122.0" styleClass="small-label" text="Address">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                 </Label>
                 <Label layoutY="150.0" prefHeight="25.0" prefWidth="122.0" styleClass="small-label" text="Phone Number">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                 </Label>
                 <Label layoutY="200.0" prefHeight="25.0" prefWidth="122.0" styleClass="small-label" text="Country">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                 </Label>
-                <Label layoutY="250.0" prefHeight="25.0" prefWidth="122.0" styleClass="small-label" text="State/Province">
+                <Label layoutY="250.0" prefHeight="25.0" prefWidth="122.0" styleClass="small-label"
+                       text="State/Province">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                 </Label>
-                <TextField fx:id="postalField" layoutX="125.0" layoutY="300.0" prefHeight="25.0" prefWidth="205.0" styleClass="text-field" />
+                <TextField fx:id="postalField" layoutX="125.0" layoutY="300.0" prefHeight="25.0" prefWidth="205.0"
+                           styleClass="text-field"/>
                 <Label layoutY="300.0" prefHeight="25.0" prefWidth="122.0" styleClass="small-label" text="Postal Code">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                 </Label>
-            <ComboBox fx:id="countryField" layoutX="125.0" layoutY="200.0" prefHeight="25.0" prefWidth="205.0" styleClass="combo-box" />
-            <ComboBox fx:id="stateField" layoutX="125.0" layoutY="250.0" prefHeight="25.0" prefWidth="205.0" styleClass="combo-box" />
+                <ComboBox fx:id="countryField" layoutX="125.0" layoutY="200.0" prefHeight="25.0" prefWidth="205.0"
+                          styleClass="combo-box"/>
+                <ComboBox fx:id="stateField" layoutX="125.0" layoutY="250.0" prefHeight="25.0" prefWidth="205.0"
+                          styleClass="combo-box"/>
             </children>
         </Group>
         <Group layoutX="93.0" layoutY="495.0">
             <children>
-                <Button layoutX="206.0" mnemonicParsing="false" onAction="#onSaveClick" prefHeight="40.0" prefWidth="122.0" styleClass="button" text="Save" />
-                <Button mnemonicParsing="false" onAction="#onCancelClick" prefHeight="40.0" prefWidth="122.0" styleClass="button" text="Cancel" />
+                <Button layoutX="206.0" mnemonicParsing="false" onAction="#onSaveClick" prefHeight="40.0"
+                        prefWidth="122.0" styleClass="button" text="Save"/>
+                <Button mnemonicParsing="false" onAction="#onCancelClick" prefHeight="40.0" prefWidth="122.0"
+                        styleClass="button" text="Cancel"/>
             </children>
         </Group>
     </children>

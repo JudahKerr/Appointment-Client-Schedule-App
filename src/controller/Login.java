@@ -1,10 +1,5 @@
 package controller;
 
-import javafx.scene.Parent;
-import javafx.scene.control.Label;
-import model.HelperFunctions;
-import model.User;
-import model.UserQuery;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,9 +7,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import main.Main;
+import model.HelperFunctions;
+import model.User;
+import model.UserQuery;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,15 +27,18 @@ public class Login implements Initializable {
     TextField passwordField;
     @FXML
     TextField usernameField;
-    @FXML Label loginLabel;
+    @FXML
+    Label loginLabel;
     @FXML
     Label usernameLabel;
     @FXML
     Label passwordLabel;
     @FXML
     Label timezoneLabel;
-    @FXML Button loginButton;
-    @FXML Button exitButton;
+    @FXML
+    Button loginButton;
+    @FXML
+    Button exitButton;
     @FXML
     Label timezone;
 
@@ -48,40 +50,39 @@ public class Login implements Initializable {
         for (User user : UserQuery.select()) {
             if (user.getUserName().equals(usernameField.getText()) && user.getPassword().equals(passwordField.getText())) {
                 isAuthenticated = true;
+                Directory.getUser(user);
                 break;
             }
         }
 
-        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/Directory.fxml"));
-          Scene scene = new Scene(fxmlLoader.load(), 1200, 900);
-          String css = this.getClass().getResource("/view/styles.css").toExternalForm();
-         scene.getStylesheets().add(css);
-           stage.setTitle("Client/Appointment Scheduler");
-           stage.setScene(scene);
-           stage.show();
+//        Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+//        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/Directory.fxml"));
+//        Scene scene = new Scene(fxmlLoader.load(), 1200, 900);
+//        String css = this.getClass().getResource("/view/styles.css").toExternalForm();
+//        scene.getStylesheets().add(css);
+//        stage.setTitle("Client/Appointment Scheduler");
+//        stage.setScene(scene);
+//        stage.show();
 
         ResourceBundle resourceBundle = ResourceBundle.getBundle("Nat", Locale.getDefault());
 
 
-        // ***********************************  UNCOMMENT AFTER PRODUCTION   **********************************//
-        //*****************************************************************************************************//
-//        if (isAuthenticated) {
-//            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-//            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/Directory.fxml"));
-//            Scene scene = new Scene(fxmlLoader.load(), 1200, 900);
-//            String css = this.getClass().getResource("/view/styles.css").toExternalForm();
-//            scene.getStylesheets().add(css);
-//            stage.setTitle("Client/Appointment Scheduler");
-//            stage.setScene(scene);
-//            stage.show();
-//        } else {
-//            String errorTitle = resourceBundle.getString("errorTitle");
-//            String errorMessage = resourceBundle.getString("errorMessage");
-//            HelperFunctions.showAlert("error", errorTitle, errorMessage);
-//        }
-    }
 
+        if (isAuthenticated) {
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/Directory.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 1200, 900);
+            String css = this.getClass().getResource("/view/styles.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            stage.setTitle("Client/Appointment Scheduler");
+            stage.setScene(scene);
+            stage.show();
+        } else {
+            String errorTitle = resourceBundle.getString("errorTitle");
+            String errorMessage = resourceBundle.getString("errorMessage");
+            HelperFunctions.showAlert("error", errorTitle, errorMessage);
+        }
+    }
 
 
     @FXML

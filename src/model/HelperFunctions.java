@@ -5,12 +5,17 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class HelperFunctions {
-
 
 
     public static ButtonType showAlert(String type, String title, String content) {
@@ -23,7 +28,9 @@ public class HelperFunctions {
             case "confirmation":
                 alert = new Alert(Alert.AlertType.CONFIRMATION);
                 break;
-
+            case "information":
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                break;
             default:
                 alert = new Alert(Alert.AlertType.NONE);
                 break;
@@ -34,10 +41,6 @@ public class HelperFunctions {
 
         // This line waits for the user to click a button and returns the result
         return alert.showAndWait().orElse(ButtonType.CANCEL);
-    }
-
-   public enum SearchType {
-        BY_ID, BY_NAME
     }
 
     public static String contactLookup(SearchType searchType, String value) throws SQLException {
@@ -86,25 +89,6 @@ public class HelperFunctions {
         return returnValue;
     }
 
-    public static class DivisionResult {
-        private String divisionName;
-        private int countryCode;
-
-        public DivisionResult(String divisionName, int countryCode) {
-            this.divisionName = divisionName;
-            this.countryCode = countryCode;
-        }
-
-        public String getDivisionName() {
-            return divisionName;
-        }
-
-        public int getCountryCode() {
-            return countryCode;
-        }
-    }
-
-
     public static DivisionResult divisionLookup(SearchType searchType, String value) throws SQLException {
         String sql;
         String divisionName = null;
@@ -139,14 +123,14 @@ public class HelperFunctions {
         String sql = "SELECT Division FROM FIRST_LEVEL_DIVISIONS WHERE Country_ID = ?";
 
         try (PreparedStatement ps = JDBC.connection.prepareStatement(sql)) {
-            ps.setInt(1,1);
+            ps.setInt(1, 1);
             ResultSet rs = ps.executeQuery();
 
             // Iterate through result set and create DivisionResult objects
             while (rs.next()) {
                 String divisionName = rs.getString("Division");
 
-               states.add(divisionName);
+                states.add(divisionName);
             }
         }
 
@@ -160,7 +144,7 @@ public class HelperFunctions {
         String sql = "SELECT Division FROM FIRST_LEVEL_DIVISIONS WHERE Country_ID = ?";
 
         try (PreparedStatement ps = JDBC.connection.prepareStatement(sql)) {
-            ps.setInt(1,2);
+            ps.setInt(1, 2);
             ResultSet rs = ps.executeQuery();
 
             // Iterate through result set and create DivisionResult objects
@@ -181,7 +165,7 @@ public class HelperFunctions {
         String sql = "SELECT Division FROM FIRST_LEVEL_DIVISIONS WHERE Country_ID = ?";
 
         try (PreparedStatement ps = JDBC.connection.prepareStatement(sql)) {
-            ps.setInt(1,3);
+            ps.setInt(1, 3);
             ResultSet rs = ps.executeQuery();
 
             // Iterate through result set and create DivisionResult objects
@@ -193,6 +177,101 @@ public class HelperFunctions {
         }
 
         return canada;
+    }
+
+    public static ObservableList<String> getContacts() throws SQLException {
+        ObservableList<String> contacts = FXCollections.observableArrayList();
+
+        String sql = "SELECT Contact_Name FROM CONTACTS";
+        try (PreparedStatement ps = JDBC.connection.prepareStatement(sql)) {
+
+            ResultSet rs = ps.executeQuery();
+
+            // Iterate through result set and create DivisionResult objects
+            while (rs.next()) {
+                String contactName = rs.getString("Contact_Name");
+
+                contacts.add(contactName);
+            }
+        }
+
+        return contacts;
+    }
+
+    public static String getContactByID(int id) throws SQLException {
+        String name = null;
+
+        String sql = "SELECT Contact_Name FROM CONTACTS WHERE Contact_ID = ?";
+        try (PreparedStatement ps = JDBC.connection.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+
+            // Iterate through result set and create DivisionResult objects
+            while (rs.next()) {
+
+
+                name = rs.getString("Contact_Name");
+            }
+        }
+
+        return name;
+    }
+
+    public enum SearchType {
+        BY_ID, BY_NAME
+    }
+
+    public static class DivisionResult {
+        private String divisionName;
+        private int countryCode;
+
+        public DivisionResult(String divisionName, int countryCode) {
+            this.divisionName = divisionName;
+            this.countryCode = countryCode;
+        }
+
+        public String getDivisionName() {
+            return divisionName;
+        }
+
+        public int getCountryCode() {
+            return countryCode;
+        }
+    }
+
+
+    public static LocalDateTime convertUtcToLocal(LocalDateTime utcDateTime) {
+        ZoneId localZoneId = ZoneId.systemDefault();
+        return convertDateTimeBetweenZones(utcDateTime, ZoneId.of("UTC"), localZoneId);
+    }
+
+    public static LocalDateTime convertUtcToEastern(LocalDateTime utcDateTime) {
+        ZoneId easternZoneId = ZoneId.of("America/New_York");
+        return convertDateTimeBetweenZones(utcDateTime, ZoneId.of("UTC"), easternZoneId);
+    }
+
+    public static LocalDateTime convertSystemToUtc(LocalDateTime systemDateTime) {
+        ZoneId localZoneId = ZoneId.systemDefault();
+        return convertDateTimeBetweenZones(systemDateTime, localZoneId, ZoneId.of("UTC"));
+    }
+
+    public static LocalDateTime convertDateTimeBetweenZones(LocalDateTime dateTime, ZoneId fromZone, ZoneId toZone) {
+        ZonedDateTime zonedFrom = dateTime.atZone(fromZone);
+        ZonedDateTime zonedTo = zonedFrom.withZoneSameInstant(toZone);
+        return zonedTo.toLocalDateTime();
+    }
+
+    public static ObservableList<String> generateTimeList() {
+        ObservableList<String> timeList = FXCollections.observableArrayList();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("H:mm");
+
+        LocalTime time = LocalTime.MIDNIGHT;
+        for (int i = 0; i < (24 * 4); i++) {
+            timeList.add(time.format(formatter));
+            time = time.plusMinutes(15);
+        }
+
+        return timeList;
     }
 
 

@@ -20,11 +20,23 @@
 
 }
 
+#timezone {
+    -fx-text-fill: #0e663d;
+    -fx-font-weight: bold;
+}
+
 /* Style labels for username and password */
 .label {
     -fx-font-family: "HK Grotesk Bold";
     -fx-font-size: 18pt; /* Font size for username/password labels */
     -fx-text-fill: #CCCCCC; /* Light gray text */
+}
+
+.small-label {
+    -fx-font-family: "HK Grotesk Bold";
+    -fx-font-size: 12pt; /* Font size for username/password labels */
+    -fx-text-fill: #CCCCCC; /* Light gray text */
+    -fx-padding: 5px;
 }
 
 /* Style text fields for username and password input */
@@ -112,17 +124,13 @@
 
 /* Style radio button when selected */
 .radio-button:selected {
-    -fx-text-fill: #FFA726; /* Green text when selected */
+    -fx-text-fill: #0e663d; /* Green text when selected */
+
 }
 
-/*****************************     ADD & UPDATE CUSTOMER     ***********************************/
+/*****************************     COMBO BOX    ***********************************/
 
-.small-label {
-    -fx-font-family: "HK Grotesk Bold";
-    -fx-font-size: 12pt; /* Font size for username/password labels */
-    -fx-text-fill: #CCCCCC; /* Light gray text */
-    -fx-padding: 5px;
-}
+
 
 .combo-box {
     -fx-font-family: "HK Grotesk Bold";
@@ -163,4 +171,45 @@
 /* Change list cell background color in ComboBox dropdown when hovered */
 .combo-box-popup .list-cell:hover {
     -fx-background-color: #373d63;
+}
+
+/*********************************     DATE PICKER   ******************************/
+
+.date-picker{
+    -fx-font-family: "HK Grotesk Bold";
+    -fx-font-size: 14pt; /* Font size for text input */
+    -fx-background-color: #737373; /* Dark gray background */
+    -fx-text-fill: #FFFFFF; /* White text */
+    -fx-pref-width: 250px; /* Preferred width */
+    -fx-pref-height: 40px;
+    -fx-min-height: 40px;
+}
+
+/* This will change the text color of the months and years */
+.date-picker .month-year-pane .spinner-label {
+    -fx-text-fill: black; /* Change this to the color you want */
+    -fx-font-family: "HK Grotesk Bold";
+    -fx-font-size: 16pt; /* Font size for text input */
+}
+
+/* This will change the text color of the days of the week */
+.date-picker .day-name-cell {
+    /* Change this to the color you want */
+}
+
+/* This will change the text color of the days */
+.date-picker .day-cell {
+    /* Change this to the color you want */
+}
+
+/* Change the background color of the arrow buttons */
+.date-picker .left-button,
+.date-picker .right-button {
+    -fx-background-color: transparent; /* Change this to your desired color */
+}
+
+/* Change the color of the arrow icons */
+.date-picker .left-button .left-arrow,
+.date-picker .right-button .right-arrow {
+    -fx-background-color: #0e663d; /* Change this to your desired color */
 }

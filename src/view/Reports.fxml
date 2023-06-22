@@ -1,71 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="900.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
-            fx:controller="controller.Reports">
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Reports">
     <children>
-        <TableView layoutX="77.0" layoutY="203.0" prefHeight="247.0" prefWidth="1044.0" AnchorPane.leftAnchor="80.0"
-                   AnchorPane.rightAnchor="80.0">
+        <TableView fx:id="contactTable" layoutX="77.0" layoutY="203.0" prefHeight="247.0" prefWidth="1044.0" styleClass="table-view" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0">
             <columns>
-                <TableColumn prefWidth="75.0" text="ID"/>
-                <TableColumn prefWidth="75.0" text="Title"/>
-                <TableColumn prefWidth="75.0" text="Type"/>
-                <TableColumn prefWidth="75.0" text="Start Date/Time"/>
-                <TableColumn prefWidth="75.0" text="End Date/Time"/>
-                <TableColumn prefWidth="75.0" text="Customer ID"/>
-                <TableColumn prefWidth="75.0" text="Description"/>
+                <TableColumn fx:id="contactID" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="contactTitle" prefWidth="75.0" text="Title" />
+                <TableColumn fx:id="contactType" prefWidth="75.0" text="Type" />
+                <TableColumn fx:id="contactStart" prefWidth="75.0" text="Start Date/Time" />
+                <TableColumn fx:id="contactEnd" prefWidth="75.0" text="End Date/Time" />
+                <TableColumn fx:id="contactCustomerID" prefWidth="75.0" text="Customer ID" />
+                <TableColumn fx:id="contactDescription" prefWidth="75.0" text="Description" />
             </columns>
             <columnResizePolicy>
-                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
         </TableView>
-        <Label alignment="CENTER" layoutX="435.0" layoutY="40.0" prefHeight="60.0" prefWidth="330.0" text="Reports">
+        <Label alignment="CENTER" layoutX="435.0" layoutY="40.0" prefHeight="60.0" prefWidth="330.0" styleClass="label" text="Reports">
             <font>
-                <Font name="Segoe UI Bold" size="24.0"/>
+                <Font name="Segoe UI Bold" size="24.0" />
             </font>
         </Label>
-        <ChoiceBox layoutX="970.0" layoutY="143.0" prefWidth="150.0"/>
-        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="836.0" layoutY="143.0" prefHeight="25.0"
-               prefWidth="113.0" text="Select A Contact">
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="750.0" layoutY="143.0" prefHeight="25.0" prefWidth="150.0" styleClass="small-label" text="Select A Contact">
             <font>
-                <Font name="Segoe UI" size="14.0"/>
+                <Font name="Segoe UI" size="14.0" />
             </font>
         </Label>
-        <Separator layoutY="464.0" prefHeight="25.0" prefWidth="1200.0"/>
-        <TableView layoutX="80.0" layoutY="570.0" prefHeight="247.0" prefWidth="365.0">
+        <Separator layoutY="464.0" prefHeight="25.0" prefWidth="1200.0" />
+        <TableView layoutX="80.0" layoutY="570.0" prefHeight="247.0" prefWidth="400.0" styleClass="table-view">
             <columns>
-                <TableColumn prefWidth="75.0" text="Month"/>
-                <TableColumn prefWidth="75.0" text="Type"/>
-                <TableColumn prefWidth="75.0" text="Total Appointments"/>
+                <TableColumn prefWidth="75.0" text="Month" />
+                <TableColumn prefWidth="75.0" text="Type" />
+                <TableColumn prefWidth="75.0" text="Total Appointments" />
             </columns>
             <columnResizePolicy>
-                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
         </TableView>
-        <Label alignment="CENTER" layoutX="188.0" layoutY="518.0" prefHeight="25.0" prefWidth="150.0"
-               text="Appointments">
+        <Label alignment="CENTER" layoutX="188.0" layoutY="518.0" prefHeight="25.0" prefWidth="150.0" styleClass="small-label" text="Appointments">
             <font>
-                <Font name="Segoe UI Bold" size="18.0"/>
+                <Font name="Segoe UI Bold" size="18.0" />
             </font>
         </Label>
-        <TableView layoutX="755.0" layoutY="570.0" prefHeight="247.0" prefWidth="365.0">
+        <TableView layoutX="720.0" layoutY="570.0" prefHeight="247.0" prefWidth="400.0" styleClass="table-view">
             <columns>
-                <TableColumn prefWidth="75.0" text="Contact Name"/>
-                <TableColumn prefWidth="75.0" text="Total Customers"/>
+                <TableColumn prefWidth="75.0" text="Contact Name" />
+                <TableColumn prefWidth="75.0" text="Total Customers" />
             </columns>
             <columnResizePolicy>
-                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
         </TableView>
-        <Label alignment="CENTER" layoutX="863.0" layoutY="518.0" prefHeight="25.0" prefWidth="150.0" text="Contacts">
+        <Label alignment="CENTER" layoutX="863.0" layoutY="518.0" prefHeight="25.0" prefWidth="150.0" styleClass="small-label" text="Contacts">
             <font>
-                <Font name="Segoe UI Bold" size="18.0"/>
+                <Font name="Segoe UI Bold" size="18.0" />
             </font>
         </Label>
-        <Button layoutX="544.0" layoutY="778.0" mnemonicParsing="false" onAction="#onBackClick" prefHeight="39.0"
-                prefWidth="113.0" text="Back"/>
+        <Button layoutX="544.0" layoutY="778.0" mnemonicParsing="false" onAction="#onBackClick" prefHeight="39.0" prefWidth="113.0" styleClass="button" text="Back" />
+      <ComboBox fx:id="contactCombo" layoutX="900.0" layoutY="143.0" onAction="#onContactChange" prefWidth="150.0" styleClass="combo-box" />
     </children>
 </AnchorPane>
