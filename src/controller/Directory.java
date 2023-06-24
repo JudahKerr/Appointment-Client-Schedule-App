@@ -66,13 +66,18 @@ public class Directory {
     private TableColumn<Appointment, String> appUserColumn;
 
     // Radio Buttons
-    @FXML private RadioButton weekRadio;
-    @FXML private RadioButton monthRadio;
-    @FXML private RadioButton allRadio;
+    @FXML
+    private RadioButton weekRadio;
+    @FXML
+    private RadioButton monthRadio;
+    @FXML
+    private RadioButton allRadio;
 
+    public static void getUser(User user) {
+        selectedUser = user;
+    }
 
     public void initialize() throws SQLException {
-        // Sets the Appointment Table
         // Formatter for the date and time
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
@@ -107,8 +112,6 @@ public class Directory {
                 }
             }
         });
-
-
 
 
         appIDColumn.setCellValueFactory(new PropertyValueFactory<>("Id"));
@@ -151,10 +154,8 @@ public class Directory {
         monthRadio.setToggleGroup(group);
         allRadio.setToggleGroup(group);
         allRadio.setSelected(true);
-    }
 
-    public static void getUser(User user){
-        selectedUser = user;
+
     }
 
     private void convertAppointmentTimesToLocal(List<Appointment> appointments) {
@@ -255,11 +256,12 @@ public class Directory {
 
     }
 
-    @FXML public void onAppointmentDeleteClick(ActionEvent event) throws IOException {
+    @FXML
+    public void onAppointmentDeleteClick(ActionEvent event) throws IOException {
 
         Appointment selectedAppointment = appTable.getSelectionModel().getSelectedItem();
 
-        if(selectedAppointment == null) {
+        if (selectedAppointment == null) {
             HelperFunctions.showAlert("error", "Error", "No appointment selected.");
         } else {
             ButtonType result = HelperFunctions.showAlert("Confirmation", "Confirmation", "Are you sure you want to delete this appointment?");
@@ -282,7 +284,8 @@ public class Directory {
             } else {
 
             }
-    }}
+        }
+    }
 
     @FXML
     public void onCustomerDeleteClick(ActionEvent event) throws IOException {

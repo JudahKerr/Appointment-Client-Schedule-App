@@ -82,6 +82,44 @@ public abstract class AppointmentQuery {
         return appointments;
     }
 
+    public static List<Appointment> appointmentsByUserID(String userID) {
+        String sql = "SELECT * FROM APPOINTMENTS WHERE User_ID = ?";
+        List<Appointment> appointments = new ArrayList<>();
+
+        try (PreparedStatement ps = JDBC.connection.prepareStatement(sql)) {
+            // Set the parameter before executing the query
+            ps.setString(1, userID);
+
+            // Now execute the query
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("appointment_id");
+                String title = rs.getString("title");
+                String description = rs.getString("description");
+                String location = rs.getString("location");
+                String type = rs.getString("type");
+                LocalDateTime start = rs.getTimestamp("start").toLocalDateTime();
+                LocalDateTime end = rs.getTimestamp("end").toLocalDateTime();
+                LocalDateTime createDate = rs.getTimestamp("create_date").toLocalDateTime();
+                String createdBy = rs.getString("created_by");
+                LocalDateTime lastUpdate = rs.getTimestamp("last_update").toLocalDateTime();
+                String lastUpdatedBy = rs.getString("last_updated_by");
+                int customerId = rs.getInt("customer_id");
+                int userId = rs.getInt("user_id");
+                int contactId = rs.getInt("contact_id");
+
+                appointments.add(new Appointment(id, title, description, location, type, start, end,
+                        createDate, createdBy, lastUpdate, lastUpdatedBy, customerId, userId, contactId));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return appointments;
+    }
+
 
     public static List<Appointment> selectAppointmentsForCurrentWeek() {
         String sql = "SELECT * FROM APPOINTMENTS WHERE EXTRACT(WEEK FROM start) = EXTRACT(WEEK FROM CURRENT_DATE) AND EXTRACT(YEAR FROM start) = EXTRACT(YEAR FROM CURRENT_DATE)";

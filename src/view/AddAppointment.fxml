@@ -1,94 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddAppointment">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            fx:controller="controller.AddAppointment">
     <children>
         <Group layoutY="25.0">
             <children>
                 <Label layoutX="300.0" styleClass="label" text="Add Appointment">
                     <font>
-                        <Font name="Segoe UI Bold" size="24.0" />
+                        <Font name="Segoe UI Bold" size="24.0"/>
                     </font>
                 </Label>
-                <Label layoutX="50.0" layoutY="75.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label" text="ID">
+                <Label layoutX="50.0" layoutY="75.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label"
+                       text="ID">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                 </Label>
-                <Label layoutX="50.0" layoutY="125.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label" text="Title">
+                <Label layoutX="50.0" layoutY="125.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label"
+                       text="Title">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                 </Label>
-                <Label layoutX="50.0" layoutY="175.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label" text="Type">
+                <Label layoutX="50.0" layoutY="175.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label"
+                       text="Type">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                 </Label>
-                <Label layoutX="50.0" layoutY="225.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label" text="Description">
+                <Label layoutX="50.0" layoutY="225.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label"
+                       text="Description">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                 </Label>
-                <Label layoutX="50.0" layoutY="275.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label" text="Location">
+                <Label layoutX="50.0" layoutY="275.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label"
+                       text="Location">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                 </Label>
-                <Label layoutX="50.0" layoutY="325.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label" text="Contact">
+                <Label layoutX="50.0" layoutY="325.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label"
+                       text="Contact">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                 </Label>
-                <Label layoutX="425.0" layoutY="75.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label" text="Start Date">
+                <Label layoutX="425.0" layoutY="75.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label"
+                       text="Start Date">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                 </Label>
-                <Label layoutX="425.0" layoutY="125.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label" text="Start Time">
+                <Label layoutX="425.0" layoutY="125.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label"
+                       text="Start Time">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                 </Label>
-                <Label layoutX="425.0" layoutY="175.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label" text="End Date">
+                <Label layoutX="425.0" layoutY="175.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label"
+                       text="End Date">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                 </Label>
-                <Label layoutX="425.0" layoutY="225.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label" text="End Time">
+                <Label layoutX="425.0" layoutY="225.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label"
+                       text="End Time">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                 </Label>
-                <Label layoutX="425.0" layoutY="275.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label" text="Customer ID">
+                <Label layoutX="425.0" layoutY="275.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label"
+                       text="Customer ID">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                 </Label>
-                <Label layoutX="425.0" layoutY="325.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label" text="User ID">
+                <Label layoutX="425.0" layoutY="325.0" prefHeight="18.0" prefWidth="100.0" styleClass="small-label"
+                       text="User ID">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                 </Label>
-                <TextField fx:id="IDField" disable="true" layoutX="150.0" layoutY="75.0" prefHeight="25.0" prefWidth="205.0" promptText="ID Auto-Generated" styleClass="text-field" />
-                <TextField fx:id="titleField" layoutX="150.0" layoutY="125.0" prefHeight="25.0" prefWidth="205.0" styleClass="text-field" />
-                <TextField fx:id="typeField" layoutX="150.0" layoutY="175.0" prefHeight="25.0" prefWidth="205.0" styleClass="text-field" />
-                <TextField fx:id="descriptionField" layoutX="150.0" layoutY="225.0" prefHeight="25.0" prefWidth="205.0" styleClass="text-field" />
-                <TextField fx:id="locationField" layoutX="150.0" layoutY="275.0" prefHeight="25.0" prefWidth="205.0" styleClass="text-field" />
-                <DatePicker fx:id="startDateField" layoutX="525.0" layoutY="75.0" prefHeight="25.0" prefWidth="205.0" styleClass="date-picker" />
-                <DatePicker fx:id="endDateField" layoutX="525.0" layoutY="175.0" prefHeight="25.0" prefWidth="205.0" styleClass="date-picker" />
-                <Button layoutX="630.0" layoutY="394.0" mnemonicParsing="false" onAction="#onSaveClick" prefHeight="43.0" prefWidth="100.0" styleClass="button" text="Save" />
-                <Button layoutX="420.0" layoutY="394.0" mnemonicParsing="false" onAction="#onCancelClick" prefHeight="43.0" prefWidth="100.0" styleClass="button" text="Cancel" />
-                <Separator layoutY="368.0" prefHeight="18.0" prefWidth="800.0" />
-            <ComboBox fx:id="contactField" layoutX="150.0" layoutY="325.0" prefHeight="25.0" prefWidth="205.0" styleClass="combo-box" />
-            <ComboBox fx:id="startTimeField" layoutX="525.0" layoutY="125.0" prefHeight="25.0" prefWidth="205.0" styleClass="combo-box" />
-            <ComboBox fx:id="endTimeField" layoutX="525.0" layoutY="225.0" prefHeight="25.0" prefWidth="205.0" styleClass="combo-box" />
-            <ComboBox fx:id="customerIDField" layoutX="525.0" layoutY="275.0" prefHeight="25.0" prefWidth="205.0" styleClass="combo-box" />
-            <ComboBox fx:id="userIDField" layoutX="525.0" layoutY="325.0" prefHeight="25.0" prefWidth="205.0" styleClass="combo-box" />
+                <TextField fx:id="IDField" disable="true" layoutX="150.0" layoutY="75.0" prefHeight="25.0"
+                           prefWidth="205.0" promptText="ID Auto-Generated" styleClass="text-field"/>
+                <TextField fx:id="titleField" layoutX="150.0" layoutY="125.0" prefHeight="25.0" prefWidth="205.0"
+                           styleClass="text-field"/>
+                <TextField fx:id="typeField" layoutX="150.0" layoutY="175.0" prefHeight="25.0" prefWidth="205.0"
+                           styleClass="text-field"/>
+                <TextField fx:id="descriptionField" layoutX="150.0" layoutY="225.0" prefHeight="25.0" prefWidth="205.0"
+                           styleClass="text-field"/>
+                <TextField fx:id="locationField" layoutX="150.0" layoutY="275.0" prefHeight="25.0" prefWidth="205.0"
+                           styleClass="text-field"/>
+                <DatePicker fx:id="startDateField" layoutX="525.0" layoutY="75.0" prefHeight="25.0" prefWidth="205.0"
+                            styleClass="date-picker"/>
+                <DatePicker fx:id="endDateField" layoutX="525.0" layoutY="175.0" prefHeight="25.0" prefWidth="205.0"
+                            styleClass="date-picker"/>
+                <Button layoutX="630.0" layoutY="394.0" mnemonicParsing="false" onAction="#onSaveClick"
+                        prefHeight="43.0" prefWidth="100.0" styleClass="button" text="Save"/>
+                <Button layoutX="420.0" layoutY="394.0" mnemonicParsing="false" onAction="#onCancelClick"
+                        prefHeight="43.0" prefWidth="100.0" styleClass="button" text="Cancel"/>
+                <Separator layoutY="368.0" prefHeight="18.0" prefWidth="800.0"/>
+                <ComboBox fx:id="contactField" layoutX="150.0" layoutY="325.0" prefHeight="25.0" prefWidth="205.0"
+                          styleClass="combo-box"/>
+                <ComboBox fx:id="startTimeField" layoutX="525.0" layoutY="125.0" prefHeight="25.0" prefWidth="205.0"
+                          styleClass="combo-box"/>
+                <ComboBox fx:id="endTimeField" layoutX="525.0" layoutY="225.0" prefHeight="25.0" prefWidth="205.0"
+                          styleClass="combo-box"/>
+                <ComboBox fx:id="customerIDField" layoutX="525.0" layoutY="275.0" prefHeight="25.0" prefWidth="205.0"
+                          styleClass="combo-box"/>
+                <ComboBox fx:id="userIDField" layoutX="525.0" layoutY="325.0" prefHeight="25.0" prefWidth="205.0"
+                          styleClass="combo-box"/>
             </children>
         </Group>
     </children>

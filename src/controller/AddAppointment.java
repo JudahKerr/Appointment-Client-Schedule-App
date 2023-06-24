@@ -6,7 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -48,7 +47,8 @@ public class AddAppointment {
     @FXML
     ComboBox<String> userIDField;
 
-    @FXML public void initialize() throws SQLException {
+    @FXML
+    public void initialize() throws SQLException {
 
         // Adding the Customer ID and Name list
         List<Customer> listOfCustomers = CustomerQuery.select();
@@ -134,13 +134,18 @@ public class AddAppointment {
                 HelperFunctions.showAlert("Error", "Error", "Appointment should be scheduled between 8:00 a.m. to 10:00 p.m. EST.");
                 return;
             }
+            // Check if End time is before Start Time or Vice Versa
+            if (estStart.toLocalTime().isAfter(estEnd.toLocalTime()) || estEnd.toLocalTime().isBefore(estStart.toLocalTime())) {
+                HelperFunctions.showAlert("Error", "Error", "Appointment Start and End times must be in logical order.");
+                return;
+            }
+
             // Check if it's the weekend
             DayOfWeek dayOfWeek = estStart.getDayOfWeek();
             if (dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY) {
                 HelperFunctions.showAlert("Error", "Error", "Appointment cannot be scheduled on a weekend.");
                 return;
             }
-
 
 
             String selectedContact = contactField.getSelectionModel().getSelectedItem();
@@ -185,11 +190,8 @@ public class AddAppointment {
             int updatedRows = AppointmentQuery.insert(title, description, location, type, startInUtc.toLocalDateTime(), endInUtc.toLocalDateTime(), createdBy, lastUpdatedBy, customerId, userId, contactID);
 
             if (updatedRows > 0) {
-                // Show success message
                 HelperFunctions.showAlert("information", "Updated", "Appointment successfully added.");
-//                Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
                 Stage stage = (Stage) titleField.getScene().getWindow();
-
                 if (stage != null) {
                     FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/Directory.fxml"));
                     Scene scene = new Scene(fxmlLoader.load(), 1200, 900);
@@ -202,11 +204,10 @@ public class AddAppointment {
                     System.out.println("Failed to fetch the Stage.");
                 }
             } else {
-                // Show failure message
+
                 System.out.println("Failed to add appointment.");
             }
         } catch (Exception e) {
-            // Log error and show error message
             e.printStackTrace();
             System.out.println("An error occurred while adding appointment.");
         }

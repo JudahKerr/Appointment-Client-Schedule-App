@@ -1,12 +1,10 @@
 package controller;
 
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -51,6 +49,10 @@ public class UpdateAppointment {
     private ComboBox<String> userIDField;
     @FXML
     private Button saveButton;
+
+    public static void getAppointment(Appointment app) {
+        selectedAppointment = app;
+    }
 
     @FXML
     public void initialize() throws SQLException {
@@ -114,10 +116,6 @@ public class UpdateAppointment {
         if (userIndexToSelect != -1) {
             userIDField.getSelectionModel().select(userIndexToSelect);
         }
-    }
-
-    public static void getAppointment(Appointment app) {
-        selectedAppointment = app;
     }
 
     @FXML
@@ -184,6 +182,11 @@ public class UpdateAppointment {
                 return;
             }
 
+            // Check if End time is before Start Time or Vice Versa
+            if (estStart.toLocalTime().isAfter(estEnd.toLocalTime()) || estEnd.toLocalTime().isBefore(estStart.toLocalTime())) {
+                HelperFunctions.showAlert("Error", "Error", "Appointment Start and End times must be in logical order.");
+                return;
+            }
 
 
             String selectedContact = contactField.getSelectionModel().getSelectedItem();
@@ -213,9 +216,17 @@ public class UpdateAppointment {
 
             // Check for overlapping appointments
             List<Appointment> existingAppointments = AppointmentQuery.getAppointmentsForCustomer(customerId);
+            int appointmentIdBeingUpdated = selectedAppointment.getId();
+
             for (Appointment existingAppointment : existingAppointments) {
                 LocalDateTime existingStartUtc = existingAppointment.getStart();
                 LocalDateTime existingEndUtc = existingAppointment.getEnd();
+
+
+                if (existingAppointment.getId() == appointmentIdBeingUpdated) {
+                    continue;
+                }
+
                 if ((startInUtc.toLocalDateTime().isEqual(existingStartUtc) || (startInUtc.toLocalDateTime().isAfter(existingStartUtc) && startInUtc.toLocalDateTime().isBefore(existingEndUtc))) ||
                         (endInUtc.toLocalDateTime().isEqual(existingEndUtc) || (endInUtc.toLocalDateTime().isAfter(existingStartUtc) && endInUtc.toLocalDateTime().isBefore(existingEndUtc))) ||
                         (startInUtc.toLocalDateTime().isBefore(existingStartUtc) && endInUtc.toLocalDateTime().isAfter(existingEndUtc))) {
@@ -228,7 +239,6 @@ public class UpdateAppointment {
             int updatedRows = AppointmentQuery.update(appointmentId, title, description, location, type, startInUtc.toLocalDateTime(), endInUtc.toLocalDateTime(), lastUpdatedBy, customerId, userId, contactID);
 
             if (updatedRows > 0) {
-                // Show success message
                 HelperFunctions.showAlert("information", "Updated", "Appointment successfully updated.");
 
                 Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
@@ -240,11 +250,9 @@ public class UpdateAppointment {
                 stage.setScene(scene);
                 stage.show();
             } else {
-                // Show failure message
                 System.out.println("Failed to add appointment.");
             }
         } catch (Exception e) {
-            // Log error and show error message
             e.printStackTrace();
             System.out.println("An error occurred while adding appointment.");
         }

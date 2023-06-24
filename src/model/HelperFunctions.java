@@ -5,7 +5,6 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
-import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -217,29 +216,6 @@ public class HelperFunctions {
         return name;
     }
 
-    public enum SearchType {
-        BY_ID, BY_NAME
-    }
-
-    public static class DivisionResult {
-        private String divisionName;
-        private int countryCode;
-
-        public DivisionResult(String divisionName, int countryCode) {
-            this.divisionName = divisionName;
-            this.countryCode = countryCode;
-        }
-
-        public String getDivisionName() {
-            return divisionName;
-        }
-
-        public int getCountryCode() {
-            return countryCode;
-        }
-    }
-
-
     public static LocalDateTime convertUtcToLocal(LocalDateTime utcDateTime) {
         ZoneId localZoneId = ZoneId.systemDefault();
         return convertDateTimeBetweenZones(utcDateTime, ZoneId.of("UTC"), localZoneId);
@@ -274,6 +250,27 @@ public class HelperFunctions {
         return timeList;
     }
 
+    public enum SearchType {
+        BY_ID, BY_NAME
+    }
+
+    public static class DivisionResult {
+        private String divisionName;
+        private int countryCode;
+
+        public DivisionResult(String divisionName, int countryCode) {
+            this.divisionName = divisionName;
+            this.countryCode = countryCode;
+        }
+
+        public String getDivisionName() {
+            return divisionName;
+        }
+
+        public int getCountryCode() {
+            return countryCode;
+        }
+    }
 
 
 }

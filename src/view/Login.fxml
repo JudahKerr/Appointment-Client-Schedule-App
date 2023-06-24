@@ -27,8 +27,8 @@
                         <Font name="Segoe UI" size="18.0"/>
                     </font>
                 </TextField>
-                <PasswordField fx:id="passwordField" alignment="CENTER" layoutX="197.0" layoutY="75.0" prefHeight="45.0"
-                               prefWidth="250.0">
+                <PasswordField fx:id="passwordField" alignment="CENTER" layoutX="197.0" layoutY="75.0"
+                               onKeyPressed="#onKeyPress" prefHeight="45.0" prefWidth="250.0">
                     <font>
                         <Font name="Segoe UI" size="18.0"/>
                     </font>

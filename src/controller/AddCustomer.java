@@ -158,16 +158,8 @@ public class AddCustomer {
                 return;
             }
 
-
-            // Random ID Generation
-//            int customerID;
-//            do {
-//                customerID = (int) Math.round(Math.random() * 1000000);
-//            } while (CustomerQuery.checkIDS(customerID) == 1);
-
-
-            String createdBy = "USER";
-            String updatedBy = "USER";
+            String createdBy = Directory.selectedUser.getUserName();
+            String updatedBy = Directory.selectedUser.getUserName();
             int divID = 0;
             String state = stateField.getSelectionModel().getSelectedItem().toString();
             HelperFunctions.DivisionResult newDiv = HelperFunctions.divisionLookup(HelperFunctions.SearchType.BY_NAME, state);
