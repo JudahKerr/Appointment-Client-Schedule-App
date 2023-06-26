@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * The Monthly report class is for the reports page.
+ */
 public class MonthlyReport {
 
     private String month;

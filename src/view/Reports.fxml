@@ -3,7 +3,8 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity"
             prefHeight="900.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
             fx:controller="controller.Reports">
     <children>
@@ -22,7 +23,8 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
             </columnResizePolicy>
         </TableView>
-        <Label alignment="CENTER" layoutX="435.0" layoutY="40.0" prefHeight="60.0" prefWidth="330.0" styleClass="label"
+        <Label alignment="CENTER" layoutX="435.0" layoutY="40.0" prefHeight="60.0" prefWidth="330.0"
+               styleClass="reports-label"
                text="Reports">
             <font>
                 <Font name="Segoe UI Bold" size="24.0"/>
@@ -47,7 +49,7 @@
             </columnResizePolicy>
         </TableView>
         <Label alignment="CENTER" layoutX="166.0" layoutY="518.0" prefHeight="25.0" prefWidth="223.0"
-               styleClass="small-label" text="Appointments">
+               styleClass="label" text="Appointments">
             <font>
                 <Font name="Segoe UI Bold" size="18.0"/>
             </font>
@@ -63,7 +65,7 @@
             </columnResizePolicy>
         </TableView>
         <Label alignment="CENTER" layoutX="821.0" layoutY="518.0" prefHeight="25.0" prefWidth="192.0"
-               styleClass="small-label" text="Division Count">
+               styleClass="label" text="Division Count">
             <font>
                 <Font name="Segoe UI Bold" size="18.0"/>
             </font>

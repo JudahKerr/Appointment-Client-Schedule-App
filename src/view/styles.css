@@ -1,9 +1,8 @@
 /* Set general styles for the root container */
 .root {
-    /*-fx-background-color: #2d2d2d; /* Dark gray background */
     -fx-background-color: #27282b;
-    -fx-padding: 30px; /* Padding around the edges */
-    -fx-alignment: center; /* Center align the children */
+    -fx-padding: 30px;
+    -fx-alignment: center;
     -fx-font-family: "HK Grotesk Bold";
 }
 
@@ -11,12 +10,12 @@
 /********************       LOGIN SCREEN      **************************/
 
 
-/* Style the label displaying 'Login' */
+
 #loginLabel {
     -fx-font-family: "HK Grotesk Bold";
-    -fx-font-size: 36pt; /* Large font size for the login label */
-    -fx-text-fill: #FFFFFF; /* White text */
-    -fx-padding: 10px; /* Some padding around the label */
+    -fx-font-size: 36pt;
+    -fx-text-fill: #FFFFFF;
+    -fx-padding: 10px;
 
 }
 
@@ -25,44 +24,50 @@
     -fx-font-weight: bold;
 }
 
-/* Style labels for username and password */
+
 .label {
     -fx-font-family: "HK Grotesk Bold";
-    -fx-font-size: 18pt; /* Font size for username/password labels */
-    -fx-text-fill: #CCCCCC; /* Light gray text */
+    -fx-font-size: 18pt;
+    -fx-text-fill: #FFFFFF;
+}
+
+.reports-label{
+    -fx-font-family: "HK Grotesk Bold";
+    -fx-font-size: 24pt;
+    -fx-text-fill: #FFFFFF;
 }
 
 .small-label {
     -fx-font-family: "HK Grotesk Bold";
-    -fx-font-size: 12pt; /* Font size for username/password labels */
-    -fx-text-fill: #CCCCCC; /* Light gray text */
+    -fx-font-size: 12pt;
+    -fx-text-fill: #CCCCCC;
     -fx-padding: 5px;
 }
 
-/* Style text fields for username and password input */
+
 .text-field {
     -fx-font-family: "HK Grotesk Bold";
-    -fx-font-size: 14pt; /* Font size for text input */
-    -fx-background-color: #737373; /* Dark gray background */
-    -fx-text-fill: #FFFFFF; /* White text */
-    -fx-pref-width: 250px; /* Preferred width */
-    -fx-padding: 5px; /* Padding inside the text field */
+    -fx-font-size: 14pt;
+    -fx-background-color: #737373;
+    -fx-text-fill: #FFFFFF;
+    -fx-pref-width: 250px;
+    -fx-padding: 5px;
 }
 
-/* Style the buttons */
+
 .button {
     -fx-font-family: "HK Grotesk Bold";
     -fx-font-weight: bold;
-    -fx-font-size: 14pt; /* Font size for button text */
-    -fx-background-color: #494E6B; /* Green background */
-    -fx-text-fill: #F7F7F7; /* White text */
-    -fx-padding: 10px 20px; /* Padding inside the button */
-    -fx-border-radius: 5px; /* Rounded corners */
+    -fx-font-size: 14pt;
+    -fx-background-color: #494E6B;
+    -fx-text-fill: #F7F7F7;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
 }
 
-/* Change button color when hovered */
+
 .button:hover {
-    -fx-background-color: #373d63; /* Slightly darker green when hovered */
+    -fx-background-color: #373d63;
     -fx-cursor: hand;
 }
 
@@ -75,22 +80,22 @@
     -fx-font-size: 28pt;
     -fx-padding: 5px;
 }
-/* Set general styles for table views */
+
 .table-view {
-    -fx-background-color: #494E6B; /* Dark gray background */
-    -fx-table-cell-border-color: #F0F0F0; /* Darker border between cells */
+    -fx-background-color: #494E6B;
+    -fx-table-cell-border-color: #F0F0F0;
 }
 
-/* Style table columns */
+
 .table-column {
-    -fx-background-color: #444444; /* Dark gray background */
-    -fx-text-fill: #FFFFFF; /* White text */
-    -fx-border-color: #333333; /* Darker border color */
+    -fx-background-color: #444444;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-color: #333333;
 }
 
 
 
-/* Style table column headers */
+
 .table-view .column-header .label {
     -fx-background-color: #28262e;
     -fx-text-fill: #D3D3D3;
@@ -98,33 +103,33 @@
     -fx-padding: 2px;
 }
 
-/* Style table cells */
+
 .table-view .table-cell {
-    -fx-text-fill: #FFFFFF; /* Light gray text */
+    -fx-text-fill: #FFFFFF;
     -fx-font-size: 14px;
     -fx-background-color: #6e6e6e;
     -fx-font-family: "HK Grotesk Bold";
-    -fx-padding: 2px; /* Padding inside the cell */
+    -fx-padding: 2px;
     -fx-alignment: center;
 }
 
 .table-view .table-row-cell:selected .table-cell {
-    -fx-background-color: #0e663d !important; /* Example: darker shade of blue */
-    -fx-text-fill: #F7F7F7 !important; /* White text */
+    -fx-background-color: #0e663d !important;
+    -fx-text-fill: #F7F7F7 !important;
 }
 
 
-/* Style the radio buttons */
+
 .radio-button {
     -fx-font-family: "HK Grotesk Bold";
-    -fx-font-size: 10pt; /* Font size for radio button text */
-    -fx-text-fill: #CCCCCC; /* Light gray text */
+    -fx-font-size: 10pt;
+    -fx-text-fill: #CCCCCC;
     -fx-font-weight: bold;
 }
 
-/* Style radio button when selected */
+
 .radio-button:selected {
-    -fx-text-fill: #0e663d; /* Green text when selected */
+    -fx-text-fill: #0e663d;
 
 }
 
@@ -156,19 +161,19 @@
     -fx-cursor: hand;
 }
 
-/* Style dropdown list in ComboBox */
+
 .combo-box-popup {
     -fx-background-color: #494E6B;
 }
 
-/* Style list cell items in ComboBox dropdown */
+
 .combo-box-popup .list-cell {
     -fx-text-fill: white;
     -fx-background-color: #737373;
 
 }
 
-/* Change list cell background color in ComboBox dropdown when hovered */
+
 .combo-box-popup .list-cell:hover {
     -fx-background-color: #373d63;
 }
@@ -177,39 +182,39 @@
 
 .date-picker{
     -fx-font-family: "HK Grotesk Bold";
-    -fx-font-size: 14pt; /* Font size for text input */
-    -fx-background-color: #737373; /* Dark gray background */
-    -fx-text-fill: #FFFFFF; /* White text */
-    -fx-pref-width: 250px; /* Preferred width */
+    -fx-font-size: 14pt;
+    -fx-background-color: #737373;
+    -fx-text-fill: #FFFFFF;
+    -fx-pref-width: 250px;
     -fx-pref-height: 40px;
     -fx-min-height: 40px;
 }
 
-/* This will change the text color of the months and years */
+
 .date-picker .month-year-pane .spinner-label {
-    -fx-text-fill: black; /* Change this to the color you want */
+    -fx-text-fill: black;
     -fx-font-family: "HK Grotesk Bold";
-    -fx-font-size: 16pt; /* Font size for text input */
+    -fx-font-size: 16pt;
 }
 
-/* This will change the text color of the days of the week */
+
 .date-picker .day-name-cell {
-    /* Change this to the color you want */
+
 }
 
-/* This will change the text color of the days */
+
 .date-picker .day-cell {
-    /* Change this to the color you want */
+
 }
 
-/* Change the background color of the arrow buttons */
+
 .date-picker .left-button,
 .date-picker .right-button {
-    -fx-background-color: transparent; /* Change this to your desired color */
+    -fx-background-color: transparent;
 }
 
-/* Change the color of the arrow icons */
+/
 .date-picker .left-button .left-arrow,
 .date-picker .right-button .right-arrow {
-    -fx-background-color: #0e663d; /* Change this to your desired color */
+    -fx-background-color: #0e663d; /
 }

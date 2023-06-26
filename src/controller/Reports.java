@@ -6,10 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import main.Main;
@@ -17,11 +14,16 @@ import model.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The Reports class has 3 different tables showing useful data. Select a contact, and it will show all of their appointments. The 2nd table shows all appointments by month and type. The 3rd table shows all divisions with customers and their total amounts. I have my 2nd Lambda expression here, a foreach loop on all my appointments. I chose to use a Lambda here because it is more concise and easier to read than the old for loop I had.
+ */
 public class Reports {
 
     @FXML
@@ -35,9 +37,9 @@ public class Reports {
     @FXML
     private TableColumn<Appointment, String> contactType;
     @FXML
-    private TableColumn<Appointment, String> contactStart;
+    private TableColumn<Appointment, LocalDateTime> contactStart;
     @FXML
-    private TableColumn<Appointment, String> contactEnd;
+    private TableColumn<Appointment, LocalDateTime> contactEnd;
     @FXML
     private TableColumn<Appointment, Integer> contactCustomerID;
     @FXML
@@ -62,6 +64,7 @@ public class Reports {
 
     @FXML
     public void initialize() throws SQLException {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         contactCombo.setItems(HelperFunctions.getContacts());
         contactCombo.getSelectionModel().select(0);
         try {
@@ -69,6 +72,33 @@ public class Reports {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        // Configure custom formatting for start and end columns
+        contactStart.setCellFactory(column -> new TableCell<Appointment, LocalDateTime>() {
+            @Override
+            protected void updateItem(LocalDateTime item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (item == null || empty) {
+                    setText(null);
+                } else {
+                    setText(formatter.format(item));
+                }
+            }
+        });
+
+        contactEnd.setCellFactory(column -> new TableCell<Appointment, LocalDateTime>() {
+            @Override
+            protected void updateItem(LocalDateTime item, boolean empty) {
+                super.updateItem(item, empty);
+
+                if (item == null || empty) {
+                    setText(null);
+                } else {
+                    setText(formatter.format(item));
+                }
+            }
+        });
 
         // Setup TableColumn cellValueFactories
         contactID.setCellValueFactory(new PropertyValueFactory<>("Id"));
@@ -85,14 +115,14 @@ public class Reports {
 
         // Process the data
         Map<String, Map<String, Integer>> monthlyReportData = new HashMap<>();
-        for (Appointment appointment : appointments) {
+
+        //  Lambda Expression #2
+        appointments.forEach(appointment -> {
             String month = appointment.getStart().getMonth().toString();
             String type = appointment.getType();
-
-            // Count the appointments by type
             monthlyReportData.putIfAbsent(month, new HashMap<>());
             monthlyReportData.get(month).put(type, monthlyReportData.get(month).getOrDefault(type, 0) + 1);
-        }
+        });
 
         // Convert processed data into list
         List<MonthlyReport> reports = new ArrayList<>();
@@ -130,6 +160,17 @@ public class Reports {
         specialTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
     }
 
+    private void convertAppointmentTimesToLocal(List<Appointment> appointments) {
+        for (Appointment appointment : appointments) {
+            LocalDateTime localStart = HelperFunctions.convertUtcToLocal(appointment.getStart());
+            LocalDateTime localEnd = HelperFunctions.convertUtcToLocal(appointment.getEnd());
+
+
+            appointment.setStart(localStart);
+            appointment.setEnd(localEnd);
+        }
+    }
+
 
     @FXML
     public void onContactChange(ActionEvent event) throws IOException, SQLException {
@@ -138,6 +179,7 @@ public class Reports {
 
         List<Appointment> appointments = AppointmentQuery.appointmentsByContactID(selectedContactID);
         ObservableList<Appointment> observableAppointments = FXCollections.observableArrayList(appointments);
+        convertAppointmentTimesToLocal(appointments);
         contactTable.setItems(observableAppointments);
     }
 

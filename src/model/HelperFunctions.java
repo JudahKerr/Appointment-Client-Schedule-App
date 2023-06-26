@@ -14,6 +14,9 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * The Helper Functions class has lots of useful methods that were repeated throughout the application, such as showing alerts, looking up contacts and divisions by name and id, converting time zones and getting lists of all states.
+ */
 public class HelperFunctions {
 
 
@@ -60,29 +63,6 @@ public class HelperFunctions {
                 returnValue = rs.getString(1);
             } else {
                 returnValue = "No Contact Found";
-            }
-        }
-        return returnValue;
-    }
-
-    public static String userLookup(SearchType searchType, String value) throws SQLException {
-        String sql;
-        String returnValue = null;
-
-        if (searchType == SearchType.BY_ID) {
-            sql = "SELECT User_Name FROM USERS WHERE User_ID = ?";
-        } else {
-            sql = "SELECT User_ID FROM USERS WHERE User_Name = ?";
-        }
-
-        try (PreparedStatement ps = JDBC.connection.prepareStatement(sql)) {
-            ps.setString(1, value);
-            ResultSet rs = ps.executeQuery();
-
-            if (rs.next()) {
-                returnValue = rs.getString(1);
-            } else {
-                returnValue = "No User Found";
             }
         }
         return returnValue;
@@ -221,15 +201,6 @@ public class HelperFunctions {
         return convertDateTimeBetweenZones(utcDateTime, ZoneId.of("UTC"), localZoneId);
     }
 
-    public static LocalDateTime convertUtcToEastern(LocalDateTime utcDateTime) {
-        ZoneId easternZoneId = ZoneId.of("America/New_York");
-        return convertDateTimeBetweenZones(utcDateTime, ZoneId.of("UTC"), easternZoneId);
-    }
-
-    public static LocalDateTime convertSystemToUtc(LocalDateTime systemDateTime) {
-        ZoneId localZoneId = ZoneId.systemDefault();
-        return convertDateTimeBetweenZones(systemDateTime, localZoneId, ZoneId.of("UTC"));
-    }
 
     public static LocalDateTime convertDateTimeBetweenZones(LocalDateTime dateTime, ZoneId fromZone, ZoneId toZone) {
         ZonedDateTime zonedFrom = dateTime.atZone(fromZone);

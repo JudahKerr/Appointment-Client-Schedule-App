@@ -3,6 +3,9 @@ package model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * The JDBC class is the connection to the MySQL driver and database.
+ */
 public abstract class JDBC {
 
     private static final String protocol = "jdbc";

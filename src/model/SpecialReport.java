@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * The Special Report page is for the reports page.
+ */
 public class SpecialReport {
     private String state;
     private int total;

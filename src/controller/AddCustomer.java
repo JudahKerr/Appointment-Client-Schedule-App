@@ -17,6 +17,10 @@ import model.HelperFunctions;
 import java.io.IOException;
 import java.sql.SQLException;
 
+
+/**
+ * This is the add customer class. It parses the text fields and combo boxes, does error checking, and then adds the customer to the database.
+ */
 public class AddCustomer {
 
     ObservableList<String> countryList = FXCollections.observableArrayList("U.S", "UK", "Canada");

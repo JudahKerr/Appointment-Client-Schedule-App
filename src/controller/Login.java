@@ -27,6 +27,10 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.TimeZone;
 
+
+/**
+ * The login class makes sure the user is authenticated through the database, providing the right username and password. Also, where the application writes to "login_activity.txt" to document all successful and otherwise login attempts.
+ */
 public class Login implements Initializable {
 
     @FXML
@@ -135,6 +139,7 @@ public class Login implements Initializable {
 
     @FXML
     protected void onExitClick(ActionEvent event) throws IOException {
+        JDBC.closeConnection();
         Platform.exit();
     }
 

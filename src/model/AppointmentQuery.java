@@ -8,6 +8,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The Appointment Query class is where the Select, Update, Insert, and Delete methods take place with Appointments and the Database.
+ */
 public abstract class AppointmentQuery {
 
     public static List<Appointment> select() {

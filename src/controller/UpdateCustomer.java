@@ -18,6 +18,10 @@ import model.HelperFunctions;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * The Update Customer class will take the customer the user selected in the Directory page, and pass it here and populate the data into all the fields. The user can then change any data and the application will save and error check.
+ */
+
 public class UpdateCustomer {
 
     private static Customer selectedCustomer = null;

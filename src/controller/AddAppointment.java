@@ -20,6 +20,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * This is the class for adding an appointment. It parses the text fields and combo boxes, does error checking, and then adds the appointment to the database.
+ */
 public class AddAppointment {
 
     @FXML

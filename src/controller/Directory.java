@@ -19,6 +19,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+/**
+ * The Directory class is where the tables for the appointments and customers are located. It serves as the main hub of the application, where you can add, update, or delete customers and applications. I have my first Lambda expression here, to add 2 event listeners to the tables, so if one is selected, it will deselect the other. I used the Lambda expression here because it is easier to read and understand what's happening.
+ */
 public class Directory {
 
     public static User selectedUser = null;
@@ -77,6 +80,7 @@ public class Directory {
         selectedUser = user;
     }
 
+
     public void initialize() throws SQLException {
         // Formatter for the date and time
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
@@ -134,6 +138,8 @@ public class Directory {
         customersState.setCellValueFactory(new PropertyValueFactory<>("stateName"));
         customersPostal.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
 
+
+        // Lambda Expression #1
         customersTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 // Deselect the item in the second table view
@@ -339,13 +345,8 @@ public class Directory {
         } else {
             try {
                 UpdateAppointment.getAppointment(selectedAppointment);
-
                 Node sourceNode = (Node) event.getSource();
-                System.out.println("Source Node: " + sourceNode);
-                System.out.println("Source Scene: " + sourceNode.getScene());
-
                 Stage stage = (Stage) sourceNode.getScene().getWindow();
-                System.out.println("Stage: " + stage);
 
                 FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/view/UpdateAppointment.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 800, 500);

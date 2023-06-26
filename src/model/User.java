@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * The User class is the structure for all Users in the application.
+ */
 public class User {
 
     private int userID;

@@ -5,32 +5,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.CustomerQuery;
 import model.JDBC;
 
 import java.sql.SQLException;
 
+/**
+ * The Main class opens the connection to the database through the JDBC class, it then launches the application with the Login page.
+ */
 public class Main extends Application {
 
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
         //  Starts MySQL Connection
         JDBC.openConnection();
 
-//     CustomerQuery.insert("Judah", "1234 Parkway", "80521", "9044687798", "Judah", "Judah", 42);
-//
-//     CustomerQuery.update("Peepee", "Peepee", "123 butt", "80521", "911", "Judah", 42, 2);
-//
-//        for(int i = 5; i <= 11; i++){
-//            CustomerQuery.delete(i);
-//        }
-
-
-        CustomerQuery.select();
-
-
         //  Starts the application, loads First Screen
-        System.setProperty("prism.lcdtext", "false");
+
         launch(args);
 
     }

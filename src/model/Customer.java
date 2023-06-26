@@ -1,5 +1,8 @@
 package model;
 
+/**
+ * The Customer class is the structure for all Customers in the application.
+ */
 public class Customer {
     private final int id;
     private final String name;

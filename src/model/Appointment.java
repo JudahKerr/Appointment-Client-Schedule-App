@@ -2,6 +2,9 @@ package model;
 
 import java.time.LocalDateTime;
 
+/**
+ * The Appointment class creates the structure of each appointment, including getters and setters.
+ */
 public class Appointment {
 
     private int id;

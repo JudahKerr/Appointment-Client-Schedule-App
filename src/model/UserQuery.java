@@ -7,6 +7,9 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The User Query class is for all Select, Update, Insert, and Delete methods for Users and the database.
+ */
 public class UserQuery {
 
     // SELECT STATEMENT

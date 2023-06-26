@@ -21,6 +21,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The Update Appointment class will take the appointment the user selected in the Directory page, and pass it here and populate the data into all the fields. The user can then change any data and the application will save and error check.
+ */
 public class UpdateAppointment {
     private static Appointment selectedAppointment = null;
     @FXML

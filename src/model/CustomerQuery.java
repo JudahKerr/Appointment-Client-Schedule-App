@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+/**
+ * The Customer Query class is for all Select, Update, Insert, and Delete methods for customers to the database.
+ */
 public abstract class CustomerQuery {
 
     public static List<Customer> select() {
