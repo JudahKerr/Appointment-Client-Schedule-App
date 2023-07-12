@@ -1,4 +1,4 @@
-Appointment anc Client Scheduler App
+Appointment and Client Scheduler App
 
 Created by Judah Kerr
 Date: 6/25/2023
